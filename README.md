@@ -1,3 +1,21 @@
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Give things a good name
+
+```typescript
+
+```
+
+### 👎 Anti-Pattern Example: Use cryptic names you will forget in the future.
+
+```typescript
+
+```
+
+</details>
+
+// TODO remove above this line
+
 # TypeScript Best Practices
 
 This is a guideline of best practices that we can apply to our TypeScript project.
@@ -6,56 +24,56 @@ Most of these recommendations also apply to JavaScript.
 
 ## Table of Contents
 
-1. [Follow conventions](#tsbp1-follow-conventions)
-2. [Testing](#tsbp2-testing)
-3. [Strict configuration](#tsbp3-strict-configuration)
-4. [Avoid `any`. Type everything](#tsbp4-avoid-any-type-everything)
-5. [Strings should be safe](#tsbp5-strings-should-be-safe)
-6. [Call things by their name](#tsbp6-call-things-by-their-name)
-7. [Use utility types](#tsbp7-use-utility-types)
-8. [Use const and let](#tsbp8-use-const-and-let)
-9. [Use === instead of ==](#tsbp9-use--instead-of-)
-10. [Use shortcut notation sparingly](#tsbp10-use-shortcut-notation-sparingly)
-11. [Avoid globals](#tsbp11-avoid-globals)
-12. [Avoid mixing with other technologies](#tsbp12-avoid-mixing-with-other-technologies)
-13. [Avoid heavy nesting](#tsbp13-avoid-heavy-nesting)
-14. [Avoid long functions](#tsbp14-avoid-long-functions)
-15. [Reduce function parameters](#tsbp15-reduce-function-parameters)
-16. [Do not use flags as function parameters](#tsbp16-do-not-use-flags-as-function-parameters)
-17. [Comment as much as needed but not more](#tsbp17-comment-as-much-as-needed-but-not-more)
-18. [Use the fastest way to loop arrays](#tsbp18-use-the-fastest-way-to-loop-arrays)
-19. [Prefer array methods](#tsbp19-prefer-array-methods)
-20. [Do not trust any data](#tsbp20-do-not-trust-any-data)
-21. [Do not use short-hand](#tsbp21-do-not-use-short-hand)
-22. [Use parameter defaults](#tsbp22-use-parameter-defaults)
-23. [Use spread and destructuring](#tsbp23-use-spread-and-destructuring)
-24. [Use template literals](#tsbp24-use-template-literals)
-25. [End the switches with defaults](#tsbp25-end-the-switches-with-defaults)
-26. [Use the prefix "is" and "has" for Booleans](#tsbp26-use-the-prefix-is-and-has-for-booleans)
-27. [Declarations on top](#tsbp27-declarations-on-top)
-28. [Initialize variables](#tsbp28-initialize-variables)
-29. [Use iterators and generators](#tsbp29-use-iterators-and-generators)
-30. [Prefer pure functions](#tsbp30-prefer-pure-functions)
-31. [Prefer immutability](#tsbp31-prefer-immutability)
-32. [Avoid side effects](#tsbp32-avoid-side-effects)
-33. [Avoid magic numbers](#tsbp33-avoid-magic-numbers)
-34. [Avoid conditionals](#tsbp34-avoid-conditionals)
-35. [Handle JavaScript errors](#tsbp35-handle-javascript-errors)
-36. [Prefer promises over callbacks](#tsbp36-prefer-promises-over-callbacks)
-37. [Do not use weird JavaScript features](#tsbp37-do-not-use-weird-javascript-features)
-38. [Do not yield to web browser whims](#tsbp38-do-not-yield-to-web-browser-whims)
-39. [Place scripts at the bottom of the page](#tsbp39-place-scripts-at-the-bottom-of-the-page)
-40. [Keep DOM access to a minimum](#tsbp40-keep-dom-access-to-a-minimum)
-41. [Allow configuration and translation](#tsbp41-allow-configuration-and-translation)
-42. [Progressive Enhancement](#tsbp42-progressive-enhancement)
-43. [Raw JavaScript is faster](#tsbp43-raw-javascript-is-faster)
-44. [Organize and remove unused imports](#tsbp44-organize-and-remove-unused-imports)
-45. [Modularization](#tsbp45-modularization)
-46. [Lazy-Loading](#tsbp46-lazy-Loading)
-47. [Compress the files](#tsbp47-compress-the-files)
-48. [Minify the code](#tsbp48-minify-the-code)
-49. [Use Google LightHouse](#tsbp49-use-google-lighthouse)
-50. [Use Web Workers](#tsbp50-use-web-workers)
+[TSBP1. Follow conventions](#tsbp1-follow-conventions)<br/>
+[TSBP2. Testing](#tsbp2-testing)<br/>
+[TSBP3. Strict configuration](#tsbp3-strict-configuration)<br/>
+[TSBP4. Avoid `any`. Type everything](#tsbp4-avoid-any-type-everything)<br/>
+[TSBP5. Strings should be safe](#tsbp5-strings-should-be-safe)<br/>
+[TSBP6. Call things by their name](#tsbp6-call-things-by-their-name)<br/>
+[TSBP7. Use utility types](#tsbp7-use-utility-types)<br/>
+[TSBP8. Use const and let](#tsbp8-use-const-and-let)<br/>
+[TSBP9. Use === instead of ==](#tsbp9-use--instead-of-)<br/>
+[TSBP10. Use shortcut notation sparingly](#tsbp10-use-shortcut-notation-sparingly)<br/>
+[TSBP11. Avoid globals](#tsbp11-avoid-globals)<br/>
+[TSBP12. Avoid mixing with other technologies](#tsbp12-avoid-mixing-with-other-technologies)<br/>
+[TSBP13. Avoid heavy nesting](#tsbp13-avoid-heavy-nesting)<br/>
+[TSBP14. Avoid long functions](#tsbp14-avoid-long-functions)<br/>
+[TSBP15. Reduce function parameters](#tsbp15-reduce-function-parameters)<br/>
+[TSBP16. Do not use flags as function parameters](#tsbp16-do-not-use-flags-as-function-parameters)<br/>
+[TSBP17. Comment as much as needed but not more](#tsbp17-comment-as-much-as-needed-but-not-more)<br/>
+[TSBP18. Use the ~~fastest~~ most readable way to loop arrays](#tsbp18-no-unnecessary-abstraction)<br/>
+[TSBP19. Prefer array methods](#tsbp19-prefer-array-methods)<br/>
+[TSBP20. Do not trust any data](#tsbp20-do-not-trust-any-data)<br/>
+[TSBP21. Do not use short-hand](#tsbp21-do-not-use-short-hand)<br/>
+[TSBP22. Use parameter defaults](#tsbp22-use-parameter-defaults)<br/>
+[TSBP23. Use spread and destructuring](#tsbp23-use-spread-and-destructuring)<br/>
+[TSBP24. Use template literals](#tsbp24-use-template-literals)<br/>
+[TSBP25. End the switches with defaults](#tsbp25-end-the-switches-with-defaults)<br/>
+[TSBP26. Use the prefix "is" and "has" for Booleans](#tsbp26-use-the-prefix-is-and-has-for-booleans)<br/>
+[TSBP27. Declarations on top](#tsbp27-declarations-on-top)<br/>
+[TSBP28. Initialize variables](#tsbp28-initialize-variables)<br/>
+[TSBP29. Use iterators and generators](#tsbp29-use-iterators-and-generators)<br/>
+[TSBP30. Prefer pure functions](#tsbp30-prefer-pure-functions)<br/>
+[TSBP31. Prefer immutability](#tsbp31-prefer-immutability)<br/>
+[TSBP32. Avoid side effects](#tsbp32-avoid-side-effects)<br/>
+[TSBP33. Avoid magic numbers](#tsbp33-avoid-magic-numbers)<br/>
+[TSBP34. Avoid conditionals](#tsbp34-avoid-conditionals)<br/>
+[TSBP35. Handle JavaScript errors](#tsbp35-handle-javascript-errors)<br/>
+[TSBP36. Prefer promises over callbacks](#tsbp36-prefer-promises-over-callbacks)<br/>
+[TSBP37. Do not use weird JavaScript features](#tsbp37-do-not-use-weird-javascript-features)<br/>
+[TSBP38. Do not yield to web browser whims](#tsbp38-do-not-yield-to-web-browser-whims)<br/>
+[TSBP39. Place scripts at the bottom of the page](#tsbp39-place-scripts-at-the-bottom-of-the-page)<br/>
+[TSBP40. Keep DOM access to a minimum](#tsbp40-keep-dom-access-to-a-minimum)<br/>
+[TSBP41. Allow configuration and translation](#tsbp41-allow-configuration-and-translation)<br/>
+[TSBP42. Progressive Enhancement](#tsbp42-progressive-enhancement)<br/>
+[TSBP43. Raw JavaScript is faster](#tsbp43-raw-javascript-is-faster)<br/>
+[TSBP44. Organize and remove unused imports](#tsbp44-organize-and-remove-unused-imports)<br/>
+[TSBP45. Modularization](#tsbp45-modularization)<br/>
+[TSBP46. Lazy-Loading](#tsbp46-lazy-Loading)<br/>
+[TSBP47. Compress the files](#tsbp47-compress-the-files)<br/>
+[TSBP48. Minify the code](#tsbp48-minify-the-code)<br/>
+[TSBP49. Use Google LightHouse](#tsbp49-use-google-lighthouse)<br/>
+[TSBP50. Use Web Workers](#tsbp50-use-web-workers)<br/>
 
 ## TSBP1: Follow conventions
 
@@ -100,9 +118,9 @@ The any type isn't necessarily a bad thing and, in fact, does still come in usef
 However, in most cases, there is a better alternative that leads to having better defined types overall.
 In new projects, it is worth setting `strict:true` in the `tsconfig.json` file to enable all strict type checking options.
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>🖊 <b>Code Examples</b></summary>
 
-### 👏 Doing It Right Example: Use specific types
+### 👍 Doing It Right Example: Use specific types
 
 ```typescript
 type MyObject = {
@@ -130,9 +148,9 @@ function getName(value: any): any {
 If we have a variable of type string that can have only a set of values, instead of declaring it as a string type, we can declare the list of possible values as the type.
 By declaring the type of the variable appropriately, we can avoid bugs while writing the code during compile time rather than during runtime.
 
-<details><summary>✏ <b>Code Examples</b></summary>
+<details><summary>🖊 <b>Code Examples</b></summary>
 
-### 👏 Doing It Right Example: Use list of values as type
+### 👍 Doing It Right Example: Use list of values as type
 
 ```typescript
 type MyStringType = 'First' | 'Second';
@@ -170,6 +188,117 @@ One trap to avoid is marrying values and functionality in names.
 A function called `isLegalDrinkingAge()` makes more sense than `isOverEighteen()` as the legal drinking age varies from country to country, and there are other things than drinking to consider that are limited by age.
 Keeping to English is a good idea, too, because, programming languages are in English.
 
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Give things a good name
+
+```typescript
+class User {
+    private userId: number;
+    private firstName: string;
+    private lastName: string;
+    private email: string;
+    private dateOfBirth: Date;
+    private isActive: boolean;
+
+    constructor(
+        userId: number,
+        firstName: string,
+        lastName: string,
+        email: string,
+        dateOfBirth: Date,
+        isActive: boolean
+    ) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.isActive = isActive;
+    }
+
+    // Getter methods
+    getUserId(): number {
+        return this.userId;
+    }
+
+    getFirstName(): string {
+        return this.firstName;
+    }
+
+    getLastName(): string {
+        return this.lastName;
+    }
+
+    getEmail(): string {
+        return this.email;
+    }
+
+    getDateOfBirth(): Date {
+        return this.dateOfBirth;
+    }
+
+    isActiveUser(): boolean {
+        return this.isActive;
+    }
+}
+```
+
+### 👎 Anti-Pattern Example: Use cryptic names you will forget in the future.
+
+```typescript
+class u {
+    private id: number;
+    private fn: string;
+    private ln: string;
+    private em: string;
+    private dob: Date;
+    private a: boolean;
+
+    constructor(
+        i: number,
+        f: string,
+        l: string,
+        e: string,
+        d: Date,
+        a: boolean
+    ) {
+        this.id = i;
+        this.fn = f;
+        this.ln = l;
+        this.em = e;
+        this.dob = d;
+        this.a = a;
+    }
+
+    gI(): number {
+        return this.id;
+    }
+
+    getF(): string {
+        return this.fn;
+    }
+
+    lN(): string {
+        return this.ln;
+    }
+
+    e(): string {
+        return this.em;
+    }
+
+    d(): Date {
+        return this.dob;
+    }
+
+    active(): boolean {
+        return this.a;
+    }
+}
+```
+
+</details>
+
 ## TSBP7: Use utility types
 
 TypeScript already has a few utility types built-in, such as `Partial<T>`, which makes all properties of `T` optional, or `Readonly<T>`, which makes `T` read-only.
@@ -177,12 +306,114 @@ They will help make our code much easier to understand.
 As a side note, only try to break interfaces or types into smaller nested interfaces/types if it makes sense from our code's domain point-of-view.
 Once they are aggressively split up, it's hard to see the structure, especially when using code completion.
 
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Using utility types.
+
+```typescript
+interface User {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    dateOfBirth: Date;
+    isActive: boolean;
+}
+
+// Using Partial to create a type for updating user information
+type UpdateUser = Partial<User>;
+
+// Using Readonly to create a type for an immutable user
+type ImmutableUser = Readonly<User>;
+
+// Using Pick to create a type for a subset of user properties
+type UserProfile = Pick<User, 'id' | 'firstName' | 'lastName' | 'email'>;
+
+// Example usage
+const user: User = {
+    id: 1,
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'john@example.com',
+    dateOfBirth: new Date('1990-01-01'),
+    isActive: true,
+};
+
+const updatedInfo: UpdateUser = {
+    id: 1,
+    email: 'updated@example.com',
+    isActive: false,
+};
+
+// Creating an immutable user
+const immutableUser: ImmutableUser = user;
+
+// Creating a user profile with a subset of properties
+const userProfile: UserProfile = {
+    id: user.id,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email,
+};
+
+// Attempting to modify properties of an immutable user will result in a type error
+// immutableUser.id = 2; // This will cause a compilation error
+```
+
+</details>
+
 ## TSBP8: Use const and let
 
 JavaScript first searches to see if a variable exists locally, then searches progressively in higher levels of scope until global variables.
 `var` is function scope, but, `let` and `const` are block scope. Using `let` and `const` where appropriate makes the intention of the declarations clearer.
 It will also help in identifying issues when a value is reassigned to a constant accidentally by throwing a compile time error.
 Do use a linter that automates checking and fixing this so that changing let to const doesn't become a delay in code review.
+
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Use let
+
+```typescript
+function demonstrateVarDangerFixed() {
+    for (let i = 0; i < 5; i++) {
+        setTimeout(function() {
+            console.log('Value of i:', i);
+        }, 100);
+    }
+}
+
+demonstrateVarDangerFixed();
+
+// Value of i: 0
+// Value of i: 1
+// Value of i: 2
+// Value of i: 3
+// Value of i: 4
+
+```
+
+### 👎 Anti-Pattern Example: Use var
+
+```typescript
+function demonstrateVarDanger() {
+    for (var i = 0; i < 5; i++) {
+        setTimeout(function() {
+            console.log('Value of i:', i);
+        }, 100);
+    }
+}
+
+demonstrateVarDanger();
+
+// Value of i: 5
+// Value of i: 5
+// Value of i: 5
+// Value of i: 5
+// Value of i: 5
+
+```
+
+</details>
 
 ## TSBP9: Use === instead of ==
 
@@ -192,6 +423,48 @@ If two operands are of the same type and value, then `===` produces `true` and `
 However, when working with `==` and `!=`, we'll run into issues when working with different types.
 In these cases, they'll try to coerce the values, unsuccessfully.
 
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Use `===` and get the right answer.
+
+```typescript
+function demonstrateEqualityDangerFixed() {
+    let numberValue = 5;
+    let stringValue = '5';
+
+    if (numberValue === stringValue) {
+        console.log('Equal');
+    } else {
+        console.log('Not Equal');
+    }
+}
+
+demonstrateEqualityDangerFixed();
+
+// Not Equal
+```
+
+### 👎 Anti-Pattern Example: Use `==` and get a false positive
+
+```typescript
+function demonstrateEqualityDanger() {
+    let numberValue = 5;
+    let stringValue = '5';
+
+    if (numberValue == stringValue) {
+        console.log('Equal');
+    } else {
+        console.log('Not Equal');
+    }
+}
+
+demonstrateEqualityDanger();
+
+// Equal
+```
+
+</details>
+
 ## TSBP10: Use shortcut notation sparingly
 
 Shortcut notation is a tricky subject.
@@ -199,7 +472,7 @@ On the one hand it keeps our code small but on the other we might make it hard f
 Well, here's a small list of what can (and should) be done:
 
 - Use `{}` instead of `new Object()`
-- Use `""` instead of `new String()`
+- Use `''` instead of `new String()`
 - Use `0` instead of `new Number()`
 - Use `false` instead of `new Boolean()`
 - Use `[]` instead of `new Array()`
@@ -211,6 +484,94 @@ Well, here's a small list of what can (and should) be done:
 Global variables and function names are an incredibly bad idea.
 The reason is that every JavaScript file included in the page runs in the same scope.
 If we have global variables or functions in our code, scripts included after ours that contain the same variable and function names will overwrite our variables/functions.
+
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Use modules to avoid globals
+
+```html
+<!DOCTYPE html>
+<!--  index.html -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES module example</title>
+    <script src="a.js" type="module"></script>
+    <script src="b.js" type="module"></script>
+    <script src="main.js" type="module"></script>
+</head>
+<body>
+</body>
+</html>
+```
+
+```javascript
+// a.js
+export function process(a) {
+    return `${a} is a string`;
+}
+```
+
+```javascript
+// b.js
+export function process(b) {
+    return b * 2;
+}
+```
+
+```javascript
+// main.js
+import {process as processString} from './a.js';
+import {process as processNumber} from './b.js';
+
+console.log(processString('test'));
+// test is a string
+console.log(processNumber(12));
+// 24
+```
+
+### 👎 Anti-Pattern Example: Function process of `a.js` will be overwritten by process of `b.js` without notice.
+
+```html
+<!DOCTYPE html>
+<!--  index.html -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES module example</title>
+    <script src="a.js"></script>
+    <script src="b.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+</body>
+</html>
+```
+
+```javascript
+// a.js
+function process(a) {
+    return `${a} is a string`;
+}
+```
+
+```javascript
+// b.js
+function process(b) {
+    return b * 2;
+}
+```
+
+```javascript
+// main.js
+console.log(process('test'));
+// NaN
+console.log(process(12));
+// 24
+
+```
+
+</details>
 
 ## TSBP12: Avoid mixing with other technologies
 
@@ -228,6 +589,49 @@ The other problem of nesting is variable names and loops.
 As we normally start our first loop with as the iterator variable, we'll go on with `j`, `k`, `l` and so on.
 This can become messy quite quickly.
 
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Use modern methods to keep the code clean.
+
+```typescript
+const matrix: number[][][] = [
+    [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+    [[10, 11, 12], [13, 14, 15], [16, 17, 18]],
+    [[19, 20, 21], [22, 23, 24], [25, 26, 27]]
+];
+
+const flatMatrix = matrix.reduce((acc, current) => [...acc, ...current], []);
+
+console.log(flatMatrix);
+
+```
+
+### 👎 Anti-Pattern Example: Using nested for-loops will making tracing variables difficult.
+
+```typescript
+const matrix: number[][][] = [
+    [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+    [[10, 11, 12], [13, 14, 15], [16, 17, 18]],
+    [[19, 20, 21], [22, 23, 24], [25, 26, 27]]
+];
+
+const flatMatrix: number[] = [];
+
+for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+        for (let k = 0; k < matrix[i][j].length; k++) {
+            flatMatrix.push(matrix[i][j][k]);
+        }
+    }
+}
+
+console.log(flatMatrix);
+
+
+```
+
+</details>
+
 ## TSBP14: Avoid long functions
 
 Long functions generally indicate that they are doing too many things.
@@ -236,6 +640,63 @@ If our function has more than 10 lines we need to ask yourself if it would be be
 The best functions or methods are from 5 to 10 lines of code.
 The method itself might be doing one thing, but inside it, there are a few other operations that could be happening.
 We can extract those methods into their own method and make them do one thing each and use them instead.
+
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: The functionality has been broken down into smaller functions, each responsible for a specific task.
+
+```typescript
+function validateOrder(order: Order): boolean {
+    // ... code for validating order data
+    // ...
+    return isValid;
+}
+
+function calculateOrderTotal(order: Order): number {
+    // ... code for calculating order total
+    // ...
+    return total;
+}
+
+function updateInventory(order: Order): void {
+    // ... code for updating inventory
+    // ...
+}
+
+function generateOrderConfirmation(order: Order): OrderConfirmation {
+    // ... code for generating order confirmation
+    // ...
+    return confirmation;
+}
+
+function processOrder(order: Order) {
+    if (validateOrder(order)) {
+        const total = calculateOrderTotal(order);
+        updateInventory(order);
+        const confirmation = generateOrderConfirmation(order);
+        // ... any additional code related to processing the order
+    } else {
+        // ... handle invalid order
+    }
+}
+
+```
+
+### 👎 Anti-Pattern Example: This can make the function difficult to read, understand, and maintain.
+
+```typescript
+function processOrder(order: Order) {
+    // ... lengthy code for validating order data
+    // ... lengthy code for calculating order total
+    // ... lengthy code for updating inventory
+    // ... lengthy code for generating order confirmation
+    // ... more lengthy code...
+    // ...
+}
+
+```
+
+</details>
 
 ## TSBP15: Reduce function parameters
 
@@ -246,6 +707,53 @@ Anything more than that should be consolidated.
 Usually, if we have more than two arguments then our function is trying to do too much.
 In cases where it's not, most of the time a higher-level object will suffice as an argument.
 
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Use an Options object
+
+```typescript
+interface PersonOptions {
+    firstName: string;
+    lastName: string;
+    age: number;
+    gender: string;
+    email: string;
+}
+
+function createPerson(options: PersonOptions): Person {
+    // ... code to create a person object using options
+    return person;
+}
+```
+
+### 👍 Doing It Right Example: Use an Options object with deconstruction.
+
+```typescript
+interface PersonOptions {
+    firstName: string;
+    lastName: string;
+    age: number;
+    gender: string;
+    email: string;
+}
+
+function createPerson({ firstName, lastName, age, gender, email }: PersonOptions): Person {
+    // ... code to create a person object using destructured parameters
+    return person;
+}
+```
+
+### 👎 Anti-Pattern Example: Too many parameters, which will give you problems when some are optional 
+
+```typescript
+function createPerson(firstName: string, lastName: string, age: number, gender: string, email: string): Person {
+    // ... code to create a person object
+    return person;
+}
+```
+
+</details>
+
 ## TSBP16: Do not use flags as function parameters
 
 Flags tell our user that this function does more than one thing.
@@ -253,6 +761,52 @@ Functions should do one thing.
 Split out our functions if they are following different code paths based on a Boolean.
 When functions do more than one thing, they are harder to compose, test, and reason about.
 When we can isolate a function to just one action, it can be refactored easily, and our code will read much cleaner.
+
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Give things a good name
+
+```typescript
+function createOrder({order, isExpress, sendMail}: OrderOptions) {
+    processOrder(order);
+    
+    if (isExpress) {
+        processExpressShipping(order);
+    }
+    if (sendEmail) {
+        sendOrderConfirmationEmail(order);
+    }
+}
+
+function processOrder(order: Order) {
+    // ... lengthy code for processing order
+}
+
+function processExpressShipping(order: Order) {
+    // ... code for express shipping
+}
+
+function sendOrderConfirmationEmail(order: Order) {
+    // ... code for sending confirmation email
+}
+
+```
+
+### 👎 Anti-Pattern Example: Use cryptic names you will forget in the future.
+
+```typescript
+function createOrder(order: Order, isExpress: boolean, sendEmail: boolean) {
+    // ... lengthy code for processing order
+    if (isExpress) {
+        // ... code for express shipping
+    }
+    if (sendEmail) {
+        // ... code for sending confirmation email
+    }
+}
+```
+
+</details>
 
 ## TSBP17: Comment as much as needed but not more
 
@@ -266,59 +820,278 @@ Some comments that we see are just noise.
 Redundant comments are comments that are not more informative than the code.
 These comments only clutter the code.
 
-## TSBP18: Use the fastest way to loop arrays
+<details><summary>🖊 <b>Code Examples</b></summary>
 
-There are many ways to loop through array.
-The first way is a `for` loop.
-Other ways include the `for...of` loop, the `forEach` method for arrays, `map`, `filter`, and others.
-There is also the `while` loop.
-The `for` loop is the fastest way.
-Caching the `length` makes the loop performs better.
-Some browser engines have optimized the `for` loop without manually caching the `length` property.
-The `forEach` is slower than the `for` loop, so it's probably better to avoid it, especially for large arrays.
-However, unless we are desperate for performance at the code level (which is rare), make it readable.
-For example, we can use the `for` loop in server-side applications and the array methods in client-side applications, because, in general, we don't have expensive operations on the client-side.
+### 👍 Doing It Right Example: Give things a good name without comments
+
+```typescript
+/**
+ * Calculate the discounted price after applying a discount percentage.
+ */
+function calculateDiscountPrice(price: number, discountPercentage: number = 21): number {
+    const discount = (price * discountPercentage) / 100;
+
+    return price - discount;
+}
+```
+
+### 👎 Anti-Pattern Example: Too much comments. Like the three times 21% discount.
+
+```typescript
+/**
+ * Calculate the discounted price after applying a discount percentage.
+ * If no discount percentage is provided, a default of 21% is used.
+ * 
+ * @param {number} price - The original price before applying the discount.
+ * @param {number} [discountPercentage=21] - The percentage of discount to be applied (default is 21%).
+ * @returns {number} The discounted price after applying the discount.
+ */
+function calculateDiscountPrice(price: number, percentage: number = 21): number {
+    // Calculate the discount amount by multiplying price with discount percentage
+    // Subtract the discount amount from the original price to get the discounted price
+    const p = price - (price * percentage / 100);
+
+    // Return the discounted price
+    return p;
+}
+
+```
+
+</details>
+
+## TSBP18: No Unnecessary Abstraction
+
+Don't introduce an extra layer of abstraction. Instead, we directly use map with the conversion function, 
+keeping the code concise, clear and more reusable.
+
+The `convertToCelsius` function in the example is useful for one item, but also for higher order functions. 
+
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: A function that updates one item.
+
+```typescript
+function convertToCelsius(fahrenheit: number): number {
+    return (fahrenheit - 32) * 5 / 9;
+}
+
+const fahrenheitTemperatures = [32, 68, 104, 212, 451];
+const celsiusTemperatures = fahrenheitTemperatures.map(convertToCelsius);
+
+console.log(celsiusTemperatures); // Output: [0, 20, 40, 100, 233]
+```
+
+### 👎 Anti-Pattern Example: Too many abstractions.
+
+```typescript
+function convertToCelsius(fahrenheit: number): number {
+    return (fahrenheit - 32) * 5 / 9;
+}
+
+function convertTemperaturesWithMap(temperatures: number[]): number[] {
+    return temperatures.map(temperature => convertToCelsius(temperature));
+}
+
+const fahrenheitTemperatures = [32, 68, 104, 212, 451];
+const celsiusTemperatures = convertTemperaturesWithMap(fahrenheitTemperatures);
+
+console.log(celsiusTemperatures); // Output: [0, 20, 40, 100, 233]
+```
+
+</details>
 
 ## TSBP19: Prefer array methods
+
+There are many ways to loop through array.
+- The `for` loop is the fastest way. Caching the `length` makes the loop performs better. Some browser engines have optimized the `for` loop without manually caching the `length` property.
+- Using the `forEach` method for arrays, `map`, `filter`, and others.
+- There is also the `while` loop.
+
+However, unless we are desperate for performance at the code level (which is rare), make it readable.
+In client-side applications, in general, we don't have expensive operations on the client-side. We can use the `for`
+loop in server-side applications and the array methods.
 
 It is recommended to use a functional approach without intermediate variables.
 The base JavaScript `for` loop can be more performant in some browsers but the benefit can be measured only by iterating over millions of items.
 It is job of compiler and runtime to remove penalty of using new array methods.
 We should ignore critics and switch to new syntax because it is shorter and more readable.
 Another thing, we will use functional programing instead of imperative programing.
-The functional programming paradigm was explicitly created to support a pure functional approach to problem solving.
+The functional programming paradigm was explicitly created to support a pure functional approach to problem-solving.
+
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Use the higher order function `filter`.
+
+```typescript
+function isEven(number: number): boolean {
+    return number % 2 === 0;
+}
+
+const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8];
+const evenNumbersUsingArrayMethods = numbersArray.filter(isEven);
+console.log(evenNumbersUsingArrayMethods); // Output: [2, 4, 6, 8]
+
+```
+
+### 👎 Anti-Pattern Example: A tiny bit, if not measurable, a bit faster, but impossible to follow.
+
+```typescript
+function findEvenNumbers(numbers: number[]): number[] {
+    const evenNumbers: number[] = [];
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] % 2 === 0) {
+            evenNumbers.push(numbers[i]);
+        }
+    }
+    return evenNumbers;
+}
+
+const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8];
+const evenNumbersUsingForLoop = findEvenNumbers(numbersArray);
+console.log(evenNumbersUsingForLoop); // Output: [2, 4, 6, 8]
+```
+
+</details>
 
 ## TSBP20: Do not trust any data
 
 One of the main points to bear in mind when talking about code and data security is not to trust any data.
 Make sure that all the data that goes into our systems is clean and exactly what we need.
-This is most important on the back end when writing out parameters retrieved from the URL.
+This is most important on the back-end when writing out parameters retrieved from the URL.
 The same applies to forms that validate only on the client side.
 Another very insecure practice is to read information from the DOM and use it without validation.
+
+Things to watch out for
+- Url query parameters
+- Input fields (user input)
+- Data from the back-end
+
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: First sanitize the data before adding to the DOM.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sanitize example</title>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        const queryParams = new URLSearchParams(window.location.search);
+        const inputValue = queryParams.get('input');
+        const sanitizer = new Sanitizer(); // https://devdocs.io/dom/html_sanitizer_api
+        
+        // Escaping and sanitizing user input before writing to the DOM
+        const outputDiv = document.getElementById('output');
+        outputDiv.setHTML(`<p>User input: ${inputValue ?? 'No input provided'}</p>`, { sanitizer });
+    </script>
+</body>
+</html>
+
+```
+
+### 👎 Anti-Pattern Example: Inject user data direct into the DOM
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>No sanitize example</title>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+        const queryParams = new URLSearchParams(window.location.search);
+        const inputValue = queryParams.get('input');
+        
+        // Writing query parameter input directly to the DOM (insecure)
+        const outputDiv = document.getElementById('output');
+        outputDiv.innerHTML = `<p>User input: ${inputValue}</p>`;
+    </script>
+</body>
+</html>
+
+```
+
+</details>
 
 ## TSBP21: Do not use short-hand
 
 Technically, we can get away with omitting most curly braces and semi-colons.
-Most browsers will correctly interpret the following:
-
-```typescript
-if(someVariableExists)
-   x = false
-```
 
 However, this approach is dangerous and not recommended.
 This is a terrible practice that should be avoided at all costs.
-The only time that curly braces should be omitted is with one-liners, and even this is a highly debated topic.
+
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Be clear
+
+```typescript
+function checkNumber(number: number) {
+    if (number > 10) {
+        console.log('Number is greater than 10');
+    } else {
+        console.log('Number is not greater than 10');
+    }
+
+    console.log('Yeah!');
+}
+```
+
+### 👎 Anti-Pattern Example: Use cryptic names you will forget in the future.
+
+```typescript
+function checkNumber(number: number) {
+    if (number > 10)
+        console.log('Number is greater than 10');
+    else
+        console.log('Number is not greater than 10');
+        console.log('Yeah!');
+}
+```
+
+</details>
 
 ## TSBP22: Use parameter defaults
 
 When we call a function and forget to pass a parameter to it, then the missing argument is set to undefined.
 ES6 introduced default parameters for the function.
-We can do this:
+
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Defaults gives you more clear code.
 
 ```typescript
-function logNumber(num = 25): void {}
+function greet(name: string = 'Guest') {
+    console.log(`Hello, ${name}!`);
+}
+
+greet(); // Output: Hello, Guest!
+greet('Alice'); // Output: Hello, Alice!
+
 ```
+
+### 👎 Anti-Pattern Example: Writing more code is making more errors.
+
+```typescript
+function greet(name?: string) {
+    if (name) {
+        console.log(`Hello, ${name}!`);
+    } else {
+        console.log('Hello, Guest!');
+    }
+}
+
+greet(); // Output: Hello, Guest!
+greet('Alice'); // Output: Hello, Alice!
+
+```
+
+</details>
 
 It is a good habit to assign default values to arguments.
 
@@ -329,12 +1102,122 @@ Compatible containers include: arrays, strings, objects and any iterable (such a
 Another interesting new feature from JavaScript is [destructuring](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
 This syntax allows us to unpack values from objects and arrays into individual properties.
 
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Using destructuring and spread.
+
+```typescript
+interface User {
+    name: string;
+    age: number;
+}
+
+// Good destructuring
+function printNameAndAge({ name, age }: User) {
+    console.log(`Name: ${name}, Age: ${age}`);
+}
+
+// Good spread usage
+const user = { name: 'Alice', age: 30 };
+const userData = { ...user, role: 'admin' };
+console.log(userData);
+
+const numbers = [1, 2, 3];
+const otherNumbers = [4, 5, 6];
+const copiedNumbers = [...numbers, ...otherNumbers, 6];
+console.log(copiedNumbers);
+
+```
+
+### 👎 Anti-Pattern Example: It saves you writing a lot of code and errors.
+
+```typescript
+interface User {
+    name: string;
+    age: number;
+}
+
+// Printing name and age without destructuring
+function printNameAndAge(person: User) {
+    const name = person.name;
+    const age = person.age;
+    
+    console.log(`Name: ${name}, Age: ${age}`);
+}
+
+const user = { name: 'Alice', age: 30 };
+const userData = {
+    name: user.name,
+    age: user.age,
+    role: 'admin'
+};
+console.log(userData);
+
+const numbers = [1, 2, 3];
+const otherNumbers = [4, 5, 6];
+const copiedNumbers = numbers.concat(otherNumbers);
+copiedNumbers.push(7);
+console.log(copiedNumbers);
+```
+
+</details>
+
 ## TSBP24: Use template literals
 
 Template literals make working with strings so much easier than before.
 No more long string concatenation.
 To create a template literal, instead of single quotes (') or double quotes (") quotes we use the backtick (`) character.
 This will produce a new string, and we can use it in any way we want.
+
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Using template literals makes your code clear.
+
+```typescript
+const name = 'Alice';
+const age = 30;
+
+// Using template literals
+const message = `Hello, my name is ${name} and I am ${age} years old.`;
+console.log(message);
+```
+
+```typescript
+const fruits = ['apple', 'banana', 'orange'];
+
+// Using template literals for iteration
+const list = `
+    <ul>
+        ${fruits.map(fruit => `<li>${fruit}</li>`).join('')}
+    </ul>
+`;
+console.log(list);
+```
+
+### 👎 Anti-Pattern Example: Excessive string concatenation and traditional looping approach
+
+```typescript
+const name = 'Alice';
+const age = 30;
+
+// Using string concatenation
+const message = 'Hello, my name is ' + name + ' and I am ' + age + ' years old.';
+console.log(message);
+```
+
+```typescript
+const fruits = ['apple', 'banana', 'orange'];
+
+// Using string concatenation for iteration
+let list = '<ul>';
+for (let i = 0; i < fruits.length; i++) {
+    list += '<li>' + fruits[i] + '</li>';
+}
+list += '</ul>';
+console.log(list);
+```
+
+</details>
 
 ## TSBP25: End the switches with defaults
 
@@ -344,15 +1227,16 @@ To avoid duplicate conditions, we can combine the default statement with another
 
 ```typescript
 function getEmoji(key: string): string {
-  switch (key) {
-    case 'dog':
-      return '🐶';
-    case 'cat':
-      return '😺';
-    // the rest of the emojis...
-    default: case 'smile':
-      return '🙂';
-  }
+    switch (key) {
+        case 'dog':
+            return '🐶';
+        case 'cat':
+            return '😺';
+        // the rest of the emojis...
+        case 'smile':
+        default:
+            return '🙂';
+    }
 }
 ```
 
@@ -550,3 +1434,12 @@ They can perform processor-intensive calculations without blocking the user inte
 - [TypeScript Style Guide and Coding Conventions](https://github.com/basarat/typescript-book/blob/master/docs/styleguide/styleguide.md)
 - [TypeScript: Do's and Don'ts](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html)
 - [Typescript Best Practices](https://engineering.zalando.com/posts/2019/02/typescript-best-practices.html)
+
+
+process een enkele item, geen arrays 
+
+No Unnecessary Abstraction: 
+In this example, we don't introduce an extra layer of abstraction (convertTemperaturesWithMap).'
+Instead, we directly use map with the conversion function, keeping the code concise and clear.
+
+geef een functie enkel wat deze nodig heeft.
