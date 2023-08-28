@@ -367,7 +367,7 @@ Do use a linter that automates checking and fixing this so that changing let to 
 ### 👍 Doing It Right Example: Use let
 
 ```typescript
-function demonstrateVarDangerFixed() {
+function demonstrateVarDangerFixed(): void {
   for (let i = 0; i < 5; i++) {
     setTimeout(function () {
       console.log('Value of i:', i);
@@ -419,7 +419,7 @@ In these cases, they'll try to coerce the values, unsuccessfully.
 ### 👍 Doing It Right Example: Use `===` and get the right answer.
 
 ```typescript
-function demonstrateEqualityDangerFixed() {
+function demonstrateEqualityDangerFixed(): void {
   let numberValue = 5;
   let stringValue = '5';
 
@@ -432,13 +432,13 @@ function demonstrateEqualityDangerFixed() {
 
 demonstrateEqualityDangerFixed();
 
-// Not Equal
+// Output: Not Equal
 ```
 
 ### 👎 Anti-Pattern Example: Use `==` and get a false positive
 
 ```typescript
-function demonstrateEqualityDanger() {
+function demonstrateEqualityDanger(): void {
   let numberValue = 5;
   let stringValue = '5';
 
@@ -451,7 +451,7 @@ function demonstrateEqualityDanger() {
 
 demonstrateEqualityDanger();
 
-// Equal
+// Output: Equal
 ```
 
 </details>
@@ -514,10 +514,8 @@ export function process(b) {
 import { process as processString } from './a.js';
 import { process as processNumber } from './b.js';
 
-console.log(processString('test'));
-// test is a string
-console.log(processNumber(12));
-// 24
+console.log(processString('test')); // Output: test is a string
+console.log(processNumber(12)); // Output: 24
 ```
 
 ### 👎 Anti-Pattern Example: Function process of `a.js` will be overwritten by process of `b.js` without notice.
@@ -553,10 +551,8 @@ function process(b) {
 
 ```javascript
 // main.js
-console.log(process('test'));
-// NaN
-console.log(process(12));
-// 24
+console.log(process('test')); // Output: NaN
+console.log(process(12)); // Output: 24
 ```
 
 </details>
@@ -602,7 +598,7 @@ const matrix: number[][][] = [
 
 const flatMatrix = matrix.flat(Infinity);
 
-console.log(flatMatrix);
+console.log(flatMatrix); // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
 ```
 
 ### 👎 Anti-Pattern Example: Using nested for-loops will making tracing variables difficult.
@@ -627,7 +623,6 @@ const matrix: number[][][] = [
 ];
 
 const flatMatrix: number[] = [];
-// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
 
 for (let i = 0; i < matrix.length; i++) {
   for (let j = 0; j < matrix[i].length; j++) {
@@ -637,7 +632,7 @@ for (let i = 0; i < matrix.length; i++) {
   }
 }
 
-console.log(flatMatrix);
+console.log(flatMatrix); // Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
 ```
 
 </details>
@@ -679,7 +674,7 @@ function generateOrderConfirmation(order: Order): OrderConfirmation {
   return confirmation;
 }
 
-function processOrder(order: Order) {
+function processOrder(order: Order): void {
   if (validateOrder(order)) {
     const total = calculateOrderTotal(order);
     updateInventory(order);
@@ -694,7 +689,7 @@ function processOrder(order: Order) {
 ### 👎 Anti-Pattern Example: This can make the function difficult to read, understand, test and maintain.
 
 ```typescript
-function processOrder(order: Order) {
+function processOrder(order: Order): void {
   // ... lengthy code for validating order data
   // ... lengthy code for calculating order total
   // ... lengthy code for updating inventory
@@ -787,7 +782,7 @@ When we can isolate a function to just one action, it can be refactored easily, 
 ### 👍 Doing It Right Example: Give things a good name
 
 ```typescript
-function createOrder({ order, isExpress, sendMail }: OrderOptions) {
+function createOrder({ order, isExpress, sendMail }: OrderOptions): void {
   processOrder(order);
 
   if (isExpress) {
@@ -798,15 +793,15 @@ function createOrder({ order, isExpress, sendMail }: OrderOptions) {
   }
 }
 
-function processOrder(order: Order) {
+function processOrder(order: Order): void {
   // ... lengthy code for processing order
 }
 
-function processExpressShipping(order: Order) {
+function processExpressShipping(order: Order): void {
   // ... code for express shipping
 }
 
-function sendOrderConfirmationEmail(order: Order) {
+function sendOrderConfirmationEmail(order: Order): void {
   // ... code for sending confirmation email
 }
 ```
@@ -814,7 +809,11 @@ function sendOrderConfirmationEmail(order: Order) {
 ### 👎 Anti-Pattern Example: Use cryptic names you will forget in the future.
 
 ```typescript
-function createOrder(order: Order, isExpress: boolean, sendEmail: boolean) {
+function createOrder(
+  order: Order,
+  isExpress: boolean,
+  sendEmail: boolean,
+): Order {
   // ... lengthy code for processing order
   if (isExpress) {
     // ... code for express shipping
@@ -954,6 +953,7 @@ function isEven(number: number): boolean {
 
 const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8];
 const evenNumbersUsingArrayMethods = numbersArray.filter(isEven);
+
 console.log(evenNumbersUsingArrayMethods); // Output: [2, 4, 6, 8]
 ```
 
@@ -972,6 +972,7 @@ function findEvenNumbers(numbers: number[]): number[] {
 
 const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8];
 const evenNumbersUsingForLoop = findEvenNumbers(numbersArray);
+
 console.log(evenNumbersUsingForLoop); // Output: [2, 4, 6, 8]
 ```
 
@@ -1057,7 +1058,7 @@ This is a terrible practice that should be avoided at all costs.
 ### 👍 Doing It Right Example: Be clear
 
 ```typescript
-function checkNumber(number: number) {
+function checkNumber(number: number): void {
   if (number > 10) {
     console.log('Number is greater than 10');
   } else {
@@ -1071,7 +1072,7 @@ function checkNumber(number: number) {
 ### 👎 Anti-Pattern Example: Use cryptic names you will forget in the future.
 
 ```typescript
-function checkNumber(number: number) {
+function checkNumber(number: number): void {
   if (number > 10) console.log('Number is greater than 10');
   else console.log('Number is not greater than 10');
   console.log('Yeah!');
@@ -1090,7 +1091,7 @@ ES6 introduced default parameters for the function.
 ### 👍 Doing It Right Example: Defaults gives you more clear code.
 
 ```typescript
-function greet(name: string = 'Guest') {
+function greet(name: string = 'Guest'): void {
   console.log(`Hello, ${name}!`);
 }
 
@@ -1101,7 +1102,7 @@ greet('Alice'); // Output: Hello, Alice!
 ### 👎 Anti-Pattern Example: Writing more code is making more errors.
 
 ```typescript
-function greet(name?: string) {
+function greet(name?: string): void {
   if (name) {
     console.log(`Hello, ${name}!`);
   } else {
@@ -1135,19 +1136,19 @@ type User = {
 };
 
 // Good destructuring
-function printNameAndAge({ name, age }: User) {
+function printNameAndAge({ name, age }: User): void {
   console.log(`Name: ${name}, Age: ${age}`);
 }
 
 // Good spread usage
-const user = { name: 'Alice', age: 30 };
+const user: User = { name: 'Alice', age: 30 };
 const userData = { ...user, role: 'admin' };
-console.log(userData);
+console.log(userData); // Output: { name: 'Alice', age: 30, role: 'admin' }
 
 const numbers = [1, 2, 3];
 const otherNumbers = [4, 5, 6];
-const copiedNumbers = [...numbers, ...otherNumbers, 6];
-console.log(copiedNumbers);
+const copiedNumbers = [...numbers, ...otherNumbers, 7];
+console.log(copiedNumbers); // Output: [1, 2, 3, 4, 5, 6, 7]
 ```
 
 ### 👎 Anti-Pattern Example: It saves you writing a lot of code and errors.
@@ -1172,13 +1173,13 @@ const userData = {
   age: user.age,
   role: 'admin',
 };
-console.log(userData);
+console.log(userData); // Output: { name: 'Alice', age: 30, role: 'admin' }
 
 const numbers = [1, 2, 3];
 const otherNumbers = [4, 5, 6];
 const copiedNumbers = numbers.concat(otherNumbers);
 copiedNumbers.push(7);
-console.log(copiedNumbers);
+console.log(copiedNumbers); // Output: [1, 2, 3, 4, 5, 6, 7]
 ```
 
 </details>
@@ -1200,7 +1201,8 @@ const age = 30;
 
 // Using template literals
 const message = `Hello, my name is ${name} and I am ${age} years old.`;
-console.log(message);
+
+console.log(message); // Output: Hello, my name is Alice and I am 30 years old.
 ```
 
 ```typescript
@@ -1212,7 +1214,8 @@ const list = `
         ${fruits.map((fruit) => `<li>${fruit}</li>`).join('')}
     </ul>
 `;
-console.log(list);
+
+console.log(list); // Output: <ul><li>apple</li><li>banana</li><li>orange</li></ul>
 ```
 
 ### 👎 Anti-Pattern Example: Excessive string concatenation and traditional looping approach
@@ -1224,7 +1227,8 @@ const age = 30;
 // Using string concatenation
 const message =
   'Hello, my name is ' + name + ' and I am ' + age + ' years old.';
-console.log(message);
+
+console.log(message); // Output: Hello, my name is Alice and I am 30 years old.
 ```
 
 ```typescript
@@ -1236,7 +1240,8 @@ for (let i = 0; i < fruits.length; i++) {
   list += '<li>' + fruits[i] + '</li>';
 }
 list += '</ul>';
-console.log(list);
+
+console.log(list); // Output: <ul><li>apple</li><li>banana</li><li>orange</li></ul>
 ```
 
 </details>
