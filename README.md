@@ -207,7 +207,7 @@ class User {
     lastName: string,
     email: string,
     dateOfBirth: Date,
-    isActive: boolean
+    isActive: boolean,
   ) {
     this.userId = userId;
     this.firstName = firstName;
@@ -311,7 +311,7 @@ type User = {
   email: string;
   dateOfBirth: Date;
   isActive: boolean;
-}
+};
 
 // Using Partial to create a type for updating user information
 type UpdateUser = Partial<User>;
@@ -329,13 +329,13 @@ const user: User = {
   lastName: 'Doe',
   email: 'john@example.com',
   dateOfBirth: new Date('1990-01-01'),
-  isActive: true
+  isActive: true,
 };
 
 const updatedInfo: UpdateUser = {
   id: 1,
   email: 'updated@example.com',
-  isActive: false
+  isActive: false,
 };
 
 // Creating an immutable user
@@ -346,7 +346,7 @@ const userProfile: UserProfile = {
   id: user.id,
   firstName: user.firstName,
   lastName: user.lastName,
-  email: user.email
+  email: user.email,
 };
 
 // Attempting to modify properties of an immutable user will result in a type error
@@ -765,7 +765,7 @@ function createPerson(
   lastName: string,
   age: number,
   gender: string,
-  email: string
+  email: string,
 ): Person {
   // ... code to create a person object
   return person;
@@ -849,7 +849,7 @@ These comments only clutter the code.
  */
 function calculateDiscountPrice(
   price: number,
-  discountPercentage: number = 21
+  discountPercentage: number = 21,
 ): number {
   const discount = (price * discountPercentage) / 100;
 
@@ -870,7 +870,7 @@ function calculateDiscountPrice(
  */
 function calculateDiscountPrice(
   price: number,
-  percentage: number = 21
+  percentage: number = 21,
 ): number {
   // Calculate the discount amount by multiplying price with discount percentage
   // Subtract the discount amount from the original price to get the discounted price
@@ -1013,7 +1013,7 @@ Things to watch out for
       const outputDiv = document.getElementById('output');
       outputDiv.setHTML(
         `<p>User input: ${inputValue ?? 'No input provided'}</p>`,
-        { sanitizer }
+        { sanitizer },
       );
     </script>
   </body>
