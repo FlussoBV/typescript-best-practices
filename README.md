@@ -304,7 +304,7 @@ Once they are aggressively split up, it's hard to see the structure, especially 
 ### 👍 Doing It Right Example: Using utility types.
 
 ```typescript
-type User {
+type User = {
   id: number;
   firstName: string;
   lastName: string;
@@ -329,13 +329,13 @@ const user: User = {
   lastName: 'Doe',
   email: 'john@example.com',
   dateOfBirth: new Date('1990-01-01'),
-  isActive: true,
+  isActive: true
 };
 
 const updatedInfo: UpdateUser = {
   id: 1,
   email: 'updated@example.com',
-  isActive: false,
+  isActive: false
 };
 
 // Creating an immutable user
@@ -346,7 +346,7 @@ const userProfile: UserProfile = {
   id: user.id,
   firstName: user.firstName,
   lastName: user.lastName,
-  email: user.email,
+  email: user.email
 };
 
 // Attempting to modify properties of an immutable user will result in a type error
@@ -1281,6 +1281,8 @@ This will give cleaner code, provide a single place to initialize variables and 
 Variables should be declared and initialized at the beginning.
 
 ## TSBP29: Use iterators and generators
+
+// TODO Not sure if this is a practical rule.
 
 Use [iterators and generators](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Iterators_and_Generators) when working with collections of data used like a stream.
 There are some good reasons such as decouples the call from the generator implementation, lazy execution because the items are streamed on demand, built-in support for iterating items using the `for-of` syntax and iterables allow to implement optimized iterator patterns.
