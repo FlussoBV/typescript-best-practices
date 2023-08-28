@@ -1274,6 +1274,50 @@ The code is read more often than it is written.
 Correctly used variable names do not need comments and explanations that can get out of sync with the code rather quickly.
 The code is written and should be readable for humans.
 
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Use a good function name to indicate a person is an adult
+
+```typescript
+type User = {
+  name: string;
+  age: number;
+};
+// Printing name and age without destructuring
+function isAdult({ age }: User) {
+  return age >= 18;
+}
+
+const user: User = { name: 'Alice', age: 30 };
+
+console.log(isAdult(user)); // Output: true
+```
+
+### 👎 Anti-Pattern Example: Using an incorrect function name can be explained in several ways
+
+```typescript
+function delivered(order: Order): boolean {
+  return order.date < new Date();
+}
+
+type Order = {
+  ordered: number;
+  delivered: number;
+  date: Date;
+};
+
+const order: Order = {
+  ordered: 10,
+  delivered: 10,
+  date: new Date(),
+};
+
+// Question on the delivered() call: Is it delivered? Or what is the delivered amount?
+console.log(delivered(order)); // Output: true
+```
+
+</details>
+
 ## TSBP27: Declarations on top
 
 It is a good coding practice to put all declarations at the top of each script or function.
@@ -1321,11 +1365,11 @@ function pureIO(output: string): string {
   return output; // Return the output instead of performing console.log
 }
 
-function pureSideEffect(a: number): {result: number, message: string} {
+function pureSideEffect(a: number): { result: number; message: string } {
   const modifiedValue = a + 10;
   return {
     result: modifiedValue * 2,
-    message: `Side effect: ${modifiedValue}`
+    message: `Side effect: ${modifiedValue}`,
   };
 }
 
@@ -1333,7 +1377,7 @@ externalState = externalState + pureAdd(3, 4); // Output: 10
 console.log(externalState); // Output: 100
 console.log(pureMultiply(2, 5, externalState)); // Output: 50
 console.log(pureRandom(Math.random(), 1, 10)); // Output: Random number between 1 and 10
-console.log(pureIO("Hello, world!")); // Output: "Hello, world!"
+console.log(pureIO('Hello, world!')); // Output: "Hello, world!"
 console.log(pureSideEffect(5)); // Output: { result: 30, message: "Side effect: 15" }
 ```
 
@@ -1342,7 +1386,7 @@ console.log(pureSideEffect(5)); // Output: { result: 30, message: "Side effect: 
 ```typescript
 let externalState = 3;
 
-function impureAdd(a: number, b: number): number{
+function impureAdd(a: number, b: number): number {
   // Mistake 1: Modifying external state
   externalState += a + b;
   return externalState;
