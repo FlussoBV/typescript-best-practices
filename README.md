@@ -600,7 +600,7 @@ const matrix: number[][][] = [
     [[19, 20, 21], [22, 23, 24], [25, 26, 27]]
 ];
 
-const flatMatrix = matrix.reduce((acc, current) => [...acc, ...current], []);
+const flatMatrix = matrix.flat(Infinity);
 
 console.log(flatMatrix);
 
