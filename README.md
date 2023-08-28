@@ -124,12 +124,12 @@ In new projects, it is worth setting `strict:true` in the `tsconfig.json` file t
 
 ```typescript
 type MyObject = {
-    id: number;
-    name: string;
+  id: number;
+  name: string;
 };
 
 function getName(value: MyObject): string {
-    return value.name;
+  return value.name;
 }
 ```
 
@@ -137,7 +137,7 @@ function getName(value: MyObject): string {
 
 ```typescript
 function getName(value: any): any {
-    return value.name;
+  return value.name;
 }
 ```
 
@@ -155,24 +155,24 @@ By declaring the type of the variable appropriately, we can avoid bugs while wri
 ```typescript
 type MyStringType = 'First' | 'Second';
 
-type MyObject = { id: number; } & {
-    [key in MyStringType]?: string;
+type MyObject = { id: number } & {
+  [key in MyStringType]?: string;
 };
 
 function getName(value: MyObject, property: MyStringType): string | undefined {
-    return value[property];
+  return value[property];
 }
 ```
 
 ### 👎 Anti-Pattern Example: Use `string` as type
 
 ```typescript
-type MyObject = { id: number; } & {
-    [key in string]?: string;
+type MyObject = { id: number } & {
+  [key in string]?: string;
 };
 
 function getName(value: MyObject, property: string): string | undefined {
-    return value[property];
+  return value[property];
 }
 ```
 
@@ -194,53 +194,53 @@ Keeping to English is a good idea, too, because, programming languages are in En
 
 ```typescript
 class User {
-    private userId: number;
-    private firstName: string;
-    private lastName: string;
-    private email: string;
-    private dateOfBirth: Date;
-    private isActive: boolean;
+  private userId: number;
+  private firstName: string;
+  private lastName: string;
+  private email: string;
+  private dateOfBirth: Date;
+  private isActive: boolean;
 
-    constructor(
-        userId: number,
-        firstName: string,
-        lastName: string,
-        email: string,
-        dateOfBirth: Date,
-        isActive: boolean
-    ) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.isActive = isActive;
-    }
+  constructor(
+    userId: number,
+    firstName: string,
+    lastName: string,
+    email: string,
+    dateOfBirth: Date,
+    isActive: boolean
+  ) {
+    this.userId = userId;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.dateOfBirth = dateOfBirth;
+    this.isActive = isActive;
+  }
 
-    // Getter methods
-    getUserId(): number {
-        return this.userId;
-    }
+  // Getter methods
+  getUserId(): number {
+    return this.userId;
+  }
 
-    getFirstName(): string {
-        return this.firstName;
-    }
+  getFirstName(): string {
+    return this.firstName;
+  }
 
-    getLastName(): string {
-        return this.lastName;
-    }
+  getLastName(): string {
+    return this.lastName;
+  }
 
-    getEmail(): string {
-        return this.email;
-    }
+  getEmail(): string {
+    return this.email;
+  }
 
-    getDateOfBirth(): Date {
-        return this.dateOfBirth;
-    }
+  getDateOfBirth(): Date {
+    return this.dateOfBirth;
+  }
 
-    isActiveUser(): boolean {
-        return this.isActive;
-    }
+  isActiveUser(): boolean {
+    return this.isActive;
+  }
 }
 ```
 
@@ -248,52 +248,45 @@ class User {
 
 ```typescript
 class u {
-    private id: number;
-    private fn: string;
-    private ln: string;
-    private em: string;
-    private dob: Date;
-    private a: boolean;
+  private id: number;
+  private fn: string;
+  private ln: string;
+  private em: string;
+  private dob: Date;
+  private a: boolean;
 
-    constructor(
-        i: number,
-        f: string,
-        l: string,
-        e: string,
-        d: Date,
-        a: boolean
-    ) {
-        this.id = i;
-        this.fn = f;
-        this.ln = l;
-        this.em = e;
-        this.dob = d;
-        this.a = a;
-    }
+  constructor(i: number, f: string, l: string, e: string, d: Date, a: boolean) {
+    this.id = i;
+    this.fn = f;
+    this.ln = l;
+    this.em = e;
+    this.dob = d;
+    this.a = a;
+  }
 
-    gI(): number {
-        return this.id;
-    }
+  gI(): number {
+    return this.id;
+  }
 
-    getF(): string {
-        return this.fn;
-    }
+  getF(): string {
+    return this.fn;
+  }
 
-    lN(): string {
-        return this.ln;
-    }
+  lN(): string {
+    return this.ln;
+  }
 
-    e(): string {
-        return this.em;
-    }
+  e(): string {
+    return this.em;
+  }
 
-    d(): Date {
-        return this.dob;
-    }
+  d(): Date {
+    return this.dob;
+  }
 
-    active(): boolean {
-        return this.a;
-    }
+  active(): boolean {
+    return this.a;
+  }
 }
 ```
 
@@ -312,12 +305,12 @@ Once they are aggressively split up, it's hard to see the structure, especially 
 
 ```typescript
 interface User {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    dateOfBirth: Date;
-    isActive: boolean;
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  dateOfBirth: Date;
+  isActive: boolean;
 }
 
 // Using Partial to create a type for updating user information
@@ -331,18 +324,18 @@ type UserProfile = Pick<User, 'id' | 'firstName' | 'lastName' | 'email'>;
 
 // Example usage
 const user: User = {
-    id: 1,
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'john@example.com',
-    dateOfBirth: new Date('1990-01-01'),
-    isActive: true,
+  id: 1,
+  firstName: 'John',
+  lastName: 'Doe',
+  email: 'john@example.com',
+  dateOfBirth: new Date('1990-01-01'),
+  isActive: true,
 };
 
 const updatedInfo: UpdateUser = {
-    id: 1,
-    email: 'updated@example.com',
-    isActive: false,
+  id: 1,
+  email: 'updated@example.com',
+  isActive: false,
 };
 
 // Creating an immutable user
@@ -350,10 +343,10 @@ const immutableUser: ImmutableUser = user;
 
 // Creating a user profile with a subset of properties
 const userProfile: UserProfile = {
-    id: user.id,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    email: user.email,
+  id: user.id,
+  firstName: user.firstName,
+  lastName: user.lastName,
+  email: user.email,
 };
 
 // Attempting to modify properties of an immutable user will result in a type error
@@ -375,11 +368,11 @@ Do use a linter that automates checking and fixing this so that changing let to 
 
 ```typescript
 function demonstrateVarDangerFixed() {
-    for (let i = 0; i < 5; i++) {
-        setTimeout(function() {
-            console.log('Value of i:', i);
-        }, 100);
-    }
+  for (let i = 0; i < 5; i++) {
+    setTimeout(function () {
+      console.log('Value of i:', i);
+    }, 100);
+  }
 }
 
 demonstrateVarDangerFixed();
@@ -389,18 +382,17 @@ demonstrateVarDangerFixed();
 // Value of i: 2
 // Value of i: 3
 // Value of i: 4
-
 ```
 
 ### 👎 Anti-Pattern Example: Use var
 
 ```typescript
 function demonstrateVarDanger() {
-    for (var i = 0; i < 5; i++) {
-        setTimeout(function() {
-            console.log('Value of i:', i);
-        }, 100);
-    }
+  for (var i = 0; i < 5; i++) {
+    setTimeout(function () {
+      console.log('Value of i:', i);
+    }, 100);
+  }
 }
 
 demonstrateVarDanger();
@@ -410,7 +402,6 @@ demonstrateVarDanger();
 // Value of i: 5
 // Value of i: 5
 // Value of i: 5
-
 ```
 
 </details>
@@ -429,14 +420,14 @@ In these cases, they'll try to coerce the values, unsuccessfully.
 
 ```typescript
 function demonstrateEqualityDangerFixed() {
-    let numberValue = 5;
-    let stringValue = '5';
+  let numberValue = 5;
+  let stringValue = '5';
 
-    if (numberValue === stringValue) {
-        console.log('Equal');
-    } else {
-        console.log('Not Equal');
-    }
+  if (numberValue === stringValue) {
+    console.log('Equal');
+  } else {
+    console.log('Not Equal');
+  }
 }
 
 demonstrateEqualityDangerFixed();
@@ -448,14 +439,14 @@ demonstrateEqualityDangerFixed();
 
 ```typescript
 function demonstrateEqualityDanger() {
-    let numberValue = 5;
-    let stringValue = '5';
+  let numberValue = 5;
+  let stringValue = '5';
 
-    if (numberValue == stringValue) {
-        console.log('Equal');
-    } else {
-        console.log('Not Equal');
-    }
+  if (numberValue == stringValue) {
+    console.log('Equal');
+  } else {
+    console.log('Not Equal');
+  }
 }
 
 demonstrateEqualityDanger();
@@ -493,36 +484,35 @@ If we have global variables or functions in our code, scripts included after our
 <!DOCTYPE html>
 <!--  index.html -->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>ES module example</title>
     <script src="a.js" type="module"></script>
     <script src="b.js" type="module"></script>
     <script src="main.js" type="module"></script>
-</head>
-<body>
-</body>
+  </head>
+  <body></body>
 </html>
 ```
 
 ```javascript
 // a.js
 export function process(a) {
-    return `${a} is a string`;
+  return `${a} is a string`;
 }
 ```
 
 ```javascript
 // b.js
 export function process(b) {
-    return b * 2;
+  return b * 2;
 }
 ```
 
 ```javascript
 // main.js
-import {process as processString} from './a.js';
-import {process as processNumber} from './b.js';
+import { process as processString } from './a.js';
+import { process as processNumber } from './b.js';
 
 console.log(processString('test'));
 // test is a string
@@ -536,29 +526,28 @@ console.log(processNumber(12));
 <!DOCTYPE html>
 <!--  index.html -->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>ES module example</title>
     <script src="a.js"></script>
     <script src="b.js"></script>
     <script src="main.js"></script>
-</head>
-<body>
-</body>
+  </head>
+  <body></body>
 </html>
 ```
 
 ```javascript
 // a.js
 function process(a) {
-    return `${a} is a string`;
+  return `${a} is a string`;
 }
 ```
 
 ```javascript
 // b.js
 function process(b) {
-    return b * 2;
+  return b * 2;
 }
 ```
 
@@ -568,7 +557,6 @@ console.log(process('test'));
 // NaN
 console.log(process(12));
 // 24
-
 ```
 
 </details>
@@ -595,39 +583,60 @@ This can become messy quite quickly.
 
 ```typescript
 const matrix: number[][][] = [
-    [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
-    [[10, 11, 12], [13, 14, 15], [16, 17, 18]],
-    [[19, 20, 21], [22, 23, 24], [25, 26, 27]]
+  [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ],
+  [
+    [10, 11, 12],
+    [13, 14, 15],
+    [16, 17, 18],
+  ],
+  [
+    [19, 20, 21],
+    [22, 23, 24],
+    [25, 26, 27],
+  ],
 ];
 
 const flatMatrix = matrix.flat(Infinity);
 
 console.log(flatMatrix);
-
 ```
 
 ### 👎 Anti-Pattern Example: Using nested for-loops will making tracing variables difficult.
 
 ```typescript
 const matrix: number[][][] = [
-    [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
-    [[10, 11, 12], [13, 14, 15], [16, 17, 18]],
-    [[19, 20, 21], [22, 23, 24], [25, 26, 27]]
+  [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ],
+  [
+    [10, 11, 12],
+    [13, 14, 15],
+    [16, 17, 18],
+  ],
+  [
+    [19, 20, 21],
+    [22, 23, 24],
+    [25, 26, 27],
+  ],
 ];
 
 const flatMatrix: number[] = [];
 
 for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix[i].length; j++) {
-        for (let k = 0; k < matrix[i][j].length; k++) {
-            flatMatrix.push(matrix[i][j][k]);
-        }
+  for (let j = 0; j < matrix[i].length; j++) {
+    for (let k = 0; k < matrix[i][j].length; k++) {
+      flatMatrix.push(matrix[i][j][k]);
     }
+  }
 }
 
 console.log(flatMatrix);
-
-
 ```
 
 </details>
@@ -647,53 +656,51 @@ We can extract those methods into their own method and make them do one thing ea
 
 ```typescript
 function validateOrder(order: Order): boolean {
-    // ... code for validating order data
-    // ...
-    return isValid;
+  // ... code for validating order data
+  // ...
+  return isValid;
 }
 
 function calculateOrderTotal(order: Order): number {
-    // ... code for calculating order total
-    // ...
-    return total;
+  // ... code for calculating order total
+  // ...
+  return total;
 }
 
 function updateInventory(order: Order): void {
-    // ... code for updating inventory
-    // ...
+  // ... code for updating inventory
+  // ...
 }
 
 function generateOrderConfirmation(order: Order): OrderConfirmation {
-    // ... code for generating order confirmation
-    // ...
-    return confirmation;
+  // ... code for generating order confirmation
+  // ...
+  return confirmation;
 }
 
 function processOrder(order: Order) {
-    if (validateOrder(order)) {
-        const total = calculateOrderTotal(order);
-        updateInventory(order);
-        const confirmation = generateOrderConfirmation(order);
-        // ... any additional code related to processing the order
-    } else {
-        // ... handle invalid order
-    }
+  if (validateOrder(order)) {
+    const total = calculateOrderTotal(order);
+    updateInventory(order);
+    const confirmation = generateOrderConfirmation(order);
+    // ... any additional code related to processing the order
+  } else {
+    // ... handle invalid order
+  }
 }
-
 ```
 
 ### 👎 Anti-Pattern Example: This can make the function difficult to read, understand, and maintain.
 
 ```typescript
 function processOrder(order: Order) {
-    // ... lengthy code for validating order data
-    // ... lengthy code for calculating order total
-    // ... lengthy code for updating inventory
-    // ... lengthy code for generating order confirmation
-    // ... more lengthy code...
-    // ...
+  // ... lengthy code for validating order data
+  // ... lengthy code for calculating order total
+  // ... lengthy code for updating inventory
+  // ... lengthy code for generating order confirmation
+  // ... more lengthy code...
+  // ...
 }
-
 ```
 
 </details>
@@ -713,16 +720,16 @@ In cases where it's not, most of the time a higher-level object will suffice as 
 
 ```typescript
 interface PersonOptions {
-    firstName: string;
-    lastName: string;
-    age: number;
-    gender: string;
-    email: string;
+  firstName: string;
+  lastName: string;
+  age: number;
+  gender: string;
+  email: string;
 }
 
 function createPerson(options: PersonOptions): Person {
-    // ... code to create a person object using options
-    return person;
+  // ... code to create a person object using options
+  return person;
 }
 ```
 
@@ -730,25 +737,37 @@ function createPerson(options: PersonOptions): Person {
 
 ```typescript
 interface PersonOptions {
-    firstName: string;
-    lastName: string;
-    age: number;
-    gender: string;
-    email: string;
+  firstName: string;
+  lastName: string;
+  age: number;
+  gender: string;
+  email: string;
 }
 
-function createPerson({ firstName, lastName, age, gender, email }: PersonOptions): Person {
-    // ... code to create a person object using destructured parameters
-    return person;
+function createPerson({
+  firstName,
+  lastName,
+  age,
+  gender,
+  email,
+}: PersonOptions): Person {
+  // ... code to create a person object using destructured parameters
+  return person;
 }
 ```
 
-### 👎 Anti-Pattern Example: Too many parameters, which will give you problems when some are optional 
+### 👎 Anti-Pattern Example: Too many parameters, which will give you problems when some are optional
 
 ```typescript
-function createPerson(firstName: string, lastName: string, age: number, gender: string, email: string): Person {
-    // ... code to create a person object
-    return person;
+function createPerson(
+  firstName: string,
+  lastName: string,
+  age: number,
+  gender: string,
+  email: string
+): Person {
+  // ... code to create a person object
+  return person;
 }
 ```
 
@@ -767,42 +786,41 @@ When we can isolate a function to just one action, it can be refactored easily, 
 ### 👍 Doing It Right Example: Give things a good name
 
 ```typescript
-function createOrder({order, isExpress, sendMail}: OrderOptions) {
-    processOrder(order);
-    
-    if (isExpress) {
-        processExpressShipping(order);
-    }
-    if (sendEmail) {
-        sendOrderConfirmationEmail(order);
-    }
+function createOrder({ order, isExpress, sendMail }: OrderOptions) {
+  processOrder(order);
+
+  if (isExpress) {
+    processExpressShipping(order);
+  }
+  if (sendEmail) {
+    sendOrderConfirmationEmail(order);
+  }
 }
 
 function processOrder(order: Order) {
-    // ... lengthy code for processing order
+  // ... lengthy code for processing order
 }
 
 function processExpressShipping(order: Order) {
-    // ... code for express shipping
+  // ... code for express shipping
 }
 
 function sendOrderConfirmationEmail(order: Order) {
-    // ... code for sending confirmation email
+  // ... code for sending confirmation email
 }
-
 ```
 
 ### 👎 Anti-Pattern Example: Use cryptic names you will forget in the future.
 
 ```typescript
 function createOrder(order: Order, isExpress: boolean, sendEmail: boolean) {
-    // ... lengthy code for processing order
-    if (isExpress) {
-        // ... code for express shipping
-    }
-    if (sendEmail) {
-        // ... code for sending confirmation email
-    }
+  // ... lengthy code for processing order
+  if (isExpress) {
+    // ... code for express shipping
+  }
+  if (sendEmail) {
+    // ... code for sending confirmation email
+  }
 }
 ```
 
@@ -828,10 +846,13 @@ These comments only clutter the code.
 /**
  * Calculate the discounted price after applying a discount percentage.
  */
-function calculateDiscountPrice(price: number, discountPercentage: number = 21): number {
-    const discount = (price * discountPercentage) / 100;
+function calculateDiscountPrice(
+  price: number,
+  discountPercentage: number = 21
+): number {
+  const discount = (price * discountPercentage) / 100;
 
-    return price - discount;
+  return price - discount;
 }
 ```
 
@@ -841,30 +862,32 @@ function calculateDiscountPrice(price: number, discountPercentage: number = 21):
 /**
  * Calculate the discounted price after applying a discount percentage.
  * If no discount percentage is provided, a default of 21% is used.
- * 
+ *
  * @param {number} price - The original price before applying the discount.
  * @param {number} [discountPercentage=21] - The percentage of discount to be applied (default is 21%).
  * @returns {number} The discounted price after applying the discount.
  */
-function calculateDiscountPrice(price: number, percentage: number = 21): number {
-    // Calculate the discount amount by multiplying price with discount percentage
-    // Subtract the discount amount from the original price to get the discounted price
-    const p = price - (price * percentage / 100);
+function calculateDiscountPrice(
+  price: number,
+  percentage: number = 21
+): number {
+  // Calculate the discount amount by multiplying price with discount percentage
+  // Subtract the discount amount from the original price to get the discounted price
+  const p = price - (price * percentage) / 100;
 
-    // Return the discounted price
-    return p;
+  // Return the discounted price
+  return p;
 }
-
 ```
 
 </details>
 
 ## TSBP18: No Unnecessary Abstraction
 
-Don't introduce an extra layer of abstraction. Instead, we directly use map with the conversion function, 
+Don't introduce an extra layer of abstraction. Instead, we directly use map with the conversion function,
 keeping the code concise, clear and more reusable.
 
-The `convertToCelsius` function in the example is useful for one item, but also for higher order functions. 
+The `convertToCelsius` function in the example is useful for one item, but also for higher order functions.
 
 <details><summary>🖊 <b>Code Examples</b></summary>
 
@@ -872,7 +895,7 @@ The `convertToCelsius` function in the example is useful for one item, but also 
 
 ```typescript
 function convertToCelsius(fahrenheit: number): number {
-    return (fahrenheit - 32) * 5 / 9;
+  return ((fahrenheit - 32) * 5) / 9;
 }
 
 const fahrenheitTemperatures = [32, 68, 104, 212, 451];
@@ -885,11 +908,11 @@ console.log(celsiusTemperatures); // Output: [0, 20, 40, 100, 233]
 
 ```typescript
 function convertToCelsius(fahrenheit: number): number {
-    return (fahrenheit - 32) * 5 / 9;
+  return ((fahrenheit - 32) * 5) / 9;
 }
 
 function convertTemperaturesWithMap(temperatures: number[]): number[] {
-    return temperatures.map(temperature => convertToCelsius(temperature));
+  return temperatures.map((temperature) => convertToCelsius(temperature));
 }
 
 const fahrenheitTemperatures = [32, 68, 104, 212, 451];
@@ -903,6 +926,7 @@ console.log(celsiusTemperatures); // Output: [0, 20, 40, 100, 233]
 ## TSBP19: Prefer array methods
 
 There are many ways to loop through array.
+
 - The `for` loop is the fastest way. Caching the `length` makes the loop performs better. Some browser engines have optimized the `for` loop without manually caching the `length` property.
 - Using the `forEach` method for arrays, `map`, `filter`, and others.
 - There is also the `while` loop.
@@ -924,26 +948,25 @@ The functional programming paradigm was explicitly created to support a pure fun
 
 ```typescript
 function isEven(number: number): boolean {
-    return number % 2 === 0;
+  return number % 2 === 0;
 }
 
 const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8];
 const evenNumbersUsingArrayMethods = numbersArray.filter(isEven);
 console.log(evenNumbersUsingArrayMethods); // Output: [2, 4, 6, 8]
-
 ```
 
 ### 👎 Anti-Pattern Example: A tiny bit, if not measurable, a bit faster, but impossible to follow.
 
 ```typescript
 function findEvenNumbers(numbers: number[]): number[] {
-    const evenNumbers: number[] = [];
-    for (let i = 0; i < numbers.length; i++) {
-        if (numbers[i] % 2 === 0) {
-            evenNumbers.push(numbers[i]);
-        }
+  const evenNumbers: number[] = [];
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) {
+      evenNumbers.push(numbers[i]);
     }
-    return evenNumbers;
+  }
+  return evenNumbers;
 }
 
 const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -962,6 +985,7 @@ The same applies to forms that validate only on the client side.
 Another very insecure practice is to read information from the DOM and use it without validation.
 
 Things to watch out for
+
 - Url query parameters
 - Input fields (user input)
 - Data from the back-end
@@ -973,24 +997,26 @@ Things to watch out for
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Sanitize example</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="output"></div>
 
     <script>
-        const queryParams = new URLSearchParams(window.location.search);
-        const inputValue = queryParams.get('input');
-        const sanitizer = new Sanitizer(); // https://devdocs.io/dom/html_sanitizer_api
-        
-        // Escaping and sanitizing user input before writing to the DOM
-        const outputDiv = document.getElementById('output');
-        outputDiv.setHTML(`<p>User input: ${inputValue ?? 'No input provided'}</p>`, { sanitizer });
-    </script>
-</body>
-</html>
+      const queryParams = new URLSearchParams(window.location.search);
+      const inputValue = queryParams.get('input');
+      const sanitizer = new Sanitizer(); // https://devdocs.io/dom/html_sanitizer_api
 
+      // Escaping and sanitizing user input before writing to the DOM
+      const outputDiv = document.getElementById('output');
+      outputDiv.setHTML(
+        `<p>User input: ${inputValue ?? 'No input provided'}</p>`,
+        { sanitizer }
+      );
+    </script>
+  </body>
+</html>
 ```
 
 ### 👎 Anti-Pattern Example: Inject user data direct into the DOM
@@ -998,23 +1024,22 @@ Things to watch out for
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>No sanitize example</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="output"></div>
 
     <script>
-        const queryParams = new URLSearchParams(window.location.search);
-        const inputValue = queryParams.get('input');
-        
-        // Writing query parameter input directly to the DOM (insecure)
-        const outputDiv = document.getElementById('output');
-        outputDiv.innerHTML = `<p>User input: ${inputValue}</p>`;
-    </script>
-</body>
-</html>
+      const queryParams = new URLSearchParams(window.location.search);
+      const inputValue = queryParams.get('input');
 
+      // Writing query parameter input directly to the DOM (insecure)
+      const outputDiv = document.getElementById('output');
+      outputDiv.innerHTML = `<p>User input: ${inputValue}</p>`;
+    </script>
+  </body>
+</html>
 ```
 
 </details>
@@ -1032,13 +1057,13 @@ This is a terrible practice that should be avoided at all costs.
 
 ```typescript
 function checkNumber(number: number) {
-    if (number > 10) {
-        console.log('Number is greater than 10');
-    } else {
-        console.log('Number is not greater than 10');
-    }
+  if (number > 10) {
+    console.log('Number is greater than 10');
+  } else {
+    console.log('Number is not greater than 10');
+  }
 
-    console.log('Yeah!');
+  console.log('Yeah!');
 }
 ```
 
@@ -1046,11 +1071,9 @@ function checkNumber(number: number) {
 
 ```typescript
 function checkNumber(number: number) {
-    if (number > 10)
-        console.log('Number is greater than 10');
-    else
-        console.log('Number is not greater than 10');
-        console.log('Yeah!');
+  if (number > 10) console.log('Number is greater than 10');
+  else console.log('Number is not greater than 10');
+  console.log('Yeah!');
 }
 ```
 
@@ -1067,28 +1090,26 @@ ES6 introduced default parameters for the function.
 
 ```typescript
 function greet(name: string = 'Guest') {
-    console.log(`Hello, ${name}!`);
+  console.log(`Hello, ${name}!`);
 }
 
 greet(); // Output: Hello, Guest!
 greet('Alice'); // Output: Hello, Alice!
-
 ```
 
 ### 👎 Anti-Pattern Example: Writing more code is making more errors.
 
 ```typescript
 function greet(name?: string) {
-    if (name) {
-        console.log(`Hello, ${name}!`);
-    } else {
-        console.log('Hello, Guest!');
-    }
+  if (name) {
+    console.log(`Hello, ${name}!`);
+  } else {
+    console.log('Hello, Guest!');
+  }
 }
 
 greet(); // Output: Hello, Guest!
 greet('Alice'); // Output: Hello, Alice!
-
 ```
 
 </details>
@@ -1108,13 +1129,13 @@ This syntax allows us to unpack values from objects and arrays into individual p
 
 ```typescript
 interface User {
-    name: string;
-    age: number;
+  name: string;
+  age: number;
 }
 
 // Good destructuring
 function printNameAndAge({ name, age }: User) {
-    console.log(`Name: ${name}, Age: ${age}`);
+  console.log(`Name: ${name}, Age: ${age}`);
 }
 
 // Good spread usage
@@ -1126,30 +1147,29 @@ const numbers = [1, 2, 3];
 const otherNumbers = [4, 5, 6];
 const copiedNumbers = [...numbers, ...otherNumbers, 6];
 console.log(copiedNumbers);
-
 ```
 
 ### 👎 Anti-Pattern Example: It saves you writing a lot of code and errors.
 
 ```typescript
 interface User {
-    name: string;
-    age: number;
+  name: string;
+  age: number;
 }
 
 // Printing name and age without destructuring
 function printNameAndAge(person: User) {
-    const name = person.name;
-    const age = person.age;
-    
-    console.log(`Name: ${name}, Age: ${age}`);
+  const name = person.name;
+  const age = person.age;
+
+  console.log(`Name: ${name}, Age: ${age}`);
 }
 
 const user = { name: 'Alice', age: 30 };
 const userData = {
-    name: user.name,
-    age: user.age,
-    role: 'admin'
+  name: user.name,
+  age: user.age,
+  role: 'admin',
 };
 console.log(userData);
 
@@ -1188,7 +1208,7 @@ const fruits = ['apple', 'banana', 'orange'];
 // Using template literals for iteration
 const list = `
     <ul>
-        ${fruits.map(fruit => `<li>${fruit}</li>`).join('')}
+        ${fruits.map((fruit) => `<li>${fruit}</li>`).join('')}
     </ul>
 `;
 console.log(list);
@@ -1201,7 +1221,8 @@ const name = 'Alice';
 const age = 30;
 
 // Using string concatenation
-const message = 'Hello, my name is ' + name + ' and I am ' + age + ' years old.';
+const message =
+  'Hello, my name is ' + name + ' and I am ' + age + ' years old.';
 console.log(message);
 ```
 
@@ -1211,7 +1232,7 @@ const fruits = ['apple', 'banana', 'orange'];
 // Using string concatenation for iteration
 let list = '<ul>';
 for (let i = 0; i < fruits.length; i++) {
-    list += '<li>' + fruits[i] + '</li>';
+  list += '<li>' + fruits[i] + '</li>';
 }
 list += '</ul>';
 console.log(list);
@@ -1227,16 +1248,16 @@ To avoid duplicate conditions, we can combine the default statement with another
 
 ```typescript
 function getEmoji(key: string): string {
-    switch (key) {
-        case 'dog':
-            return '🐶';
-        case 'cat':
-            return '😺';
-        // the rest of the emojis...
-        case 'smile':
-        default:
-            return '🙂';
-    }
+  switch (key) {
+    case 'dog':
+      return '🐶';
+    case 'cat':
+      return '😺';
+    // the rest of the emojis...
+    case 'smile':
+    default:
+      return '🙂';
+  }
 }
 ```
 
@@ -1435,10 +1456,9 @@ They can perform processor-intensive calculations without blocking the user inte
 - [TypeScript: Do's and Don'ts](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html)
 - [Typescript Best Practices](https://engineering.zalando.com/posts/2019/02/typescript-best-practices.html)
 
+process een enkele item, geen arrays
 
-process een enkele item, geen arrays 
-
-No Unnecessary Abstraction: 
+No Unnecessary Abstraction:
 In this example, we don't introduce an extra layer of abstraction (convertTemperaturesWithMap).'
 Instead, we directly use map with the conversion function, keeping the code concise and clear.
 
