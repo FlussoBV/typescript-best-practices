@@ -720,13 +720,13 @@ In cases where it's not, most of the time a higher-level object will suffice as 
 ### 👍 Doing It Right Example: Use an Options object
 
 ```typescript
-type PersonOptions {
+type PersonOptions = {
   firstName: string;
   lastName: string;
   age: number;
   gender: string;
   email: string;
-}
+};
 
 function createPerson(options: PersonOptions): Person {
   // ... code to create a person object using options
@@ -737,13 +737,13 @@ function createPerson(options: PersonOptions): Person {
 ### 👍 Doing It Right Example: Use an Options object with deconstruction.
 
 ```typescript
-type PersonOptions {
+type PersonOptions = {
   firstName: string;
   lastName: string;
   age: number;
   gender: string;
   email: string;
-}
+};
 
 function createPerson({
   firstName,
@@ -1129,10 +1129,10 @@ This syntax allows us to unpack values from objects and arrays into individual p
 ### 👍 Doing It Right Example: Using destructuring and spread.
 
 ```typescript
-type User {
+type User = {
   name: string;
   age: number;
-}
+};
 
 // Good destructuring
 function printNameAndAge({ name, age }: User) {
@@ -1153,10 +1153,10 @@ console.log(copiedNumbers);
 ### 👎 Anti-Pattern Example: It saves you writing a lot of code and errors.
 
 ```typescript
-type User {
+type User = {
   name: string;
   age: number;
-}
+};
 
 // Printing name and age without destructuring
 function printNameAndAge(person: User) {
