@@ -627,6 +627,7 @@ const matrix: number[][][] = [
 ];
 
 const flatMatrix: number[] = [];
+// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
 
 for (let i = 0; i < matrix.length; i++) {
   for (let j = 0; j < matrix[i].length; j++) {
@@ -690,7 +691,7 @@ function processOrder(order: Order) {
 }
 ```
 
-### 👎 Anti-Pattern Example: This can make the function difficult to read, understand, and maintain.
+### 👎 Anti-Pattern Example: This can make the function difficult to read, understand, test and maintain.
 
 ```typescript
 function processOrder(order: Order) {
