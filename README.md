@@ -304,7 +304,7 @@ Once they are aggressively split up, it's hard to see the structure, especially 
 ### 👍 Doing It Right Example: Using utility types.
 
 ```typescript
-interface User {
+type User {
   id: number;
   firstName: string;
   lastName: string;
@@ -720,7 +720,7 @@ In cases where it's not, most of the time a higher-level object will suffice as 
 ### 👍 Doing It Right Example: Use an Options object
 
 ```typescript
-interface PersonOptions {
+type PersonOptions {
   firstName: string;
   lastName: string;
   age: number;
@@ -737,7 +737,7 @@ function createPerson(options: PersonOptions): Person {
 ### 👍 Doing It Right Example: Use an Options object with deconstruction.
 
 ```typescript
-interface PersonOptions {
+type PersonOptions {
   firstName: string;
   lastName: string;
   age: number;
@@ -1129,7 +1129,7 @@ This syntax allows us to unpack values from objects and arrays into individual p
 ### 👍 Doing It Right Example: Using destructuring and spread.
 
 ```typescript
-interface User {
+type User {
   name: string;
   age: number;
 }
@@ -1153,7 +1153,7 @@ console.log(copiedNumbers);
 ### 👎 Anti-Pattern Example: It saves you writing a lot of code and errors.
 
 ```typescript
-interface User {
+type User {
   name: string;
   age: number;
 }
