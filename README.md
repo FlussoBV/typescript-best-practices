@@ -1300,23 +1300,23 @@ Other benefits of writing pure functions for functional programming, for instanc
 ```typescript
 let externalState = 3;
 
-function pureAdd(a, b) {
+function pureAdd(a: number, b: number): number {
   return a + b;
 }
 
-function pureMultiply(a, b, multiplier) {
+function pureMultiply(a: number, b: number, multiplier: number): number {
   return a * b * multiplier;
 }
 
-function pureRandom(seed, min, max) {
+function pureRandom(seed: number, min: number, max: number) {
   return seed * (max - min) + min;
 }
 
-function pureIO(output) {
+function pureIO(output: string): string {
   return output; // Return the output instead of performing console.log
 }
 
-function pureSideEffect(a) {
+function pureSideEffect(a: number): {result: number, message: string} {
   const modifiedValue = a + 10;
   return {
     result: modifiedValue * 2,
@@ -1337,28 +1337,28 @@ console.log(pureSideEffect(5)); // Output: { result: 30, message: "Side effect: 
 ```typescript
 let externalState = 3;
 
-function impureAdd(a, b){
+function impureAdd(a: number, b: number): number{
   // Mistake 1: Modifying external state
   externalState += a + b;
   return externalState;
 }
 
-function impureMultiply(a, b) {
+function impureMultiply(a: number, b: number): number {
   // Mistake 2: Reliance on external state
   return a * b * externalState;
 }
 
-function impureRandom(min, max) {
+function impureRandom(min: number, max: number): number {
   // Mistake 3: Non-deterministic output
   return Math.random() * (max - min) + min;
 }
 
-function impureIO(output) {
+function impureIO(output: string): void {
   // Mistake 4: Performing I/O operations
   console.log(output);
 }
 
-function impureSideEffect(a) {
+function impureSideEffect(a: number): number {
   // Mistake 5: Modifying arguments
   a = a + 10;
   console.log(`Side effect: ${a}`);
