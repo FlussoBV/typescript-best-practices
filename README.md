@@ -1293,6 +1293,87 @@ A [pure function](https://www.freecodecamp.org/news/what-is-a-pure-function-in-j
 They're easier to reason about, easier to combine, easier to test, easier to debug, easier to parallelize.
 Other benefits of writing pure functions for functional programming, for instance, they are idempotent, offer referential transparency, are memoizable and can be lazy.
 
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Give things a good name
+
+```typescript
+let externalState = 3;
+
+function pureAdd(a, b) {
+  return a + b;
+}
+
+function pureMultiply(a, b, multiplier) {
+  return a * b * multiplier;
+}
+
+function pureRandom(seed, min, max) {
+  return seed * (max - min) + min;
+}
+
+function pureIO(output) {
+  return output; // Return the output instead of performing console.log
+}
+
+function pureSideEffect(a) {
+  const modifiedValue = a + 10;
+  return {
+    result: modifiedValue * 2,
+    message: `Side effect: ${modifiedValue}`
+  };
+}
+
+externalState = externalState + pureAdd(3, 4); // Output: 10
+console.log(externalState); // Output: 100
+console.log(pureMultiply(2, 5, externalState)); // Output: 50
+console.log(pureRandom(Math.random(), 1, 10)); // Output: Random number between 1 and 10
+console.log(pureIO("Hello, world!")); // Output: "Hello, world!"
+console.log(pureSideEffect(5)); // Output: { result: 30, message: "Side effect: 15" }
+```
+
+### 👎 Anti-Pattern Example: Use cryptic names you will forget in the future.
+
+```typescript
+let externalState = 3;
+
+function impureAdd(a, b){
+  // Mistake 1: Modifying external state
+  externalState += a + b;
+  return externalState;
+}
+
+function impureMultiply(a, b) {
+  // Mistake 2: Reliance on external state
+  return a * b * externalState;
+}
+
+function impureRandom(min, max) {
+  // Mistake 3: Non-deterministic output
+  return Math.random() * (max - min) + min;
+}
+
+function impureIO(output) {
+  // Mistake 4: Performing I/O operations
+  console.log(output);
+}
+
+function impureSideEffect(a) {
+  // Mistake 5: Modifying arguments
+  a = a + 10;
+  console.log(`Side effect: ${a}`);
+  return a * 2;
+}
+
+console.log(impureAdd(3, 4)); // Output: 10
+console.log(impureMultiply(2, 5)); // Output: 100
+console.log(impureRandom(1, 10)); // Output: Random number between 1 and 10
+console.log(impureIO('Hello, world!')); // Output: "Hello, world!"
+console.log(impureSideEffect(5)); // Output: Side effect: 15 & 30
+```
+
+</details>
+
 ## TSBP31: Prefer immutability
 
 The immutability in JavaScript allows us to differentiate objects and track changes in our objects.
