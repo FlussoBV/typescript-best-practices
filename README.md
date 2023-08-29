@@ -1297,19 +1297,19 @@ console.log(isAdult(user)); // Output: true
 
 ```typescript
 function delivered(order: Order): boolean {
-  return order.date < new Date();
+  return order.deliveryDate < new Date();
 }
 
 type Order = {
   ordered: number;
   delivered: number;
-  date: Date;
+  deliveryDate: Date;
 };
 
 const order: Order = {
   ordered: 10,
   delivered: 10,
-  date: new Date(),
+  deliveryDate: new Date(),
 };
 
 // Question on the delivered() call: Is it delivered? Or what is the delivered amount?
