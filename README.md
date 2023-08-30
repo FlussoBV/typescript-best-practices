@@ -1321,11 +1321,11 @@ function pureIO(output: string): string {
   return output; // Return the output instead of performing console.log
 }
 
-function pureSideEffect(a: number): {result: number, message: string} {
+function pureSideEffect(a: number): { result: number; message: string } {
   const modifiedValue = a + 10;
   return {
     result: modifiedValue * 2,
-    message: `Side effect: ${modifiedValue}`
+    message: `Side effect: ${modifiedValue}`,
   };
 }
 
@@ -1333,7 +1333,7 @@ externalState = externalState + pureAdd(3, 4); // Output: 10
 console.log(externalState); // Output: 100
 console.log(pureMultiply(2, 5, externalState)); // Output: 50
 console.log(pureRandom(Math.random(), 1, 10)); // Output: Random number between 1 and 10
-console.log(pureIO("Hello, world!")); // Output: "Hello, world!"
+console.log(pureIO('Hello, world!')); // Output: "Hello, world!"
 console.log(pureSideEffect(5)); // Output: { result: 30, message: "Side effect: 15" }
 ```
 
@@ -1342,7 +1342,7 @@ console.log(pureSideEffect(5)); // Output: { result: 30, message: "Side effect: 
 ```typescript
 let externalState = 3;
 
-function impureAdd(a: number, b: number): number{
+function impureAdd(a: number, b: number): number {
   // Mistake 1: Modifying external state
   externalState += a + b;
   return externalState;
@@ -1401,6 +1401,36 @@ This makes the code difficult to understand and maintain.
 Magic numbers should be avoided as they often lack documentation.
 Forcing them to be stored in variables gives them implicit documentation.
 With [no-magic-numbers](https://palantir.github.io/tslint/rules/no-magic-numbers/) lint rule, we make code more readable and refactoring easier by ensuring that special numbers are declared as constants to make their meaning explicit.
+
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Do not hard code the value of PI (3.14159) inside a function
+
+```typescript
+function calculateCircleArea(radius: number) {
+  return 3.14159 * radius * radius;
+}
+
+const area = calculateCircleArea(5);
+
+console.log(area); // Output: 78.53975
+```
+
+### 👎 Anti-Pattern Example: Define the value of PI (3.14159) at the beginning of the code (or in a constants file)
+
+```typescript
+const PI = 3.14159;
+
+function calculateCircleArea(radius: number) {
+  return PI * radius * radius;
+}
+
+const area = calculateCircleArea(5);
+
+console.log(area); // Output: 78.53975
+```
+
+</details>
 
 ## TSBP34: Avoid conditionals
 
