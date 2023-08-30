@@ -1447,7 +1447,7 @@ delayWithPromise(2000)
 
 ### 👎 Anti-Pattern Example: Do not use a callback function which will be executed after the timeout
 
-````typescript
+```typescript
 function delayWithCallback(milliseconds: number, callback: () => void): void {
   setTimeout(() => {
     callback();
@@ -1588,4 +1588,3 @@ In this example, we don't introduce an extra layer of abstraction (convertTemper
 Instead, we directly use map with the conversion function, keeping the code concise and clear.
 
 geef een functie enkel wat deze nodig heeft.
-````
