@@ -1279,18 +1279,20 @@ The code is written and should be readable for humans.
 ### 👍 Doing It Right Example: Use a good function name to indicate a person is an adult
 
 ```typescript
-type User = {
-  name: string;
-  age: number;
+type OrderLine = {};
+
+type Order = {
+  date: Date;
+  lines: OrderLine[];
 };
-// Printing name and age without destructuring
-function isAdult({ age }: User) {
-  return age >= 18;
+
+function hasOrderLines(order: Order): boolean {
+  return order.lines.length > 0;
 }
 
-const user: User = { name: 'Alice', age: 30 };
+const order: Order = { date: new Date(), lines: [] };
 
-console.log(isAdult(user)); // Output: true
+console.log(hasOrderLines(order)); // Output: false
 ```
 
 ### 👎 Anti-Pattern Example: Using an incorrect function name can be explained in several ways
