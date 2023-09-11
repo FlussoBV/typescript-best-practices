@@ -1274,6 +1274,52 @@ The code is read more often than it is written.
 Correctly used variable names do not need comments and explanations that can get out of sync with the code rather quickly.
 The code is written and should be readable for humans.
 
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Use a good function name to indicate a person is an adult
+
+```typescript
+type OrderLine = {};
+
+type Order = {
+  date: Date;
+  lines: OrderLine[];
+};
+
+function hasOrderLines(order: Order): boolean {
+  return order.lines.length > 0;
+}
+
+const order: Order = { date: new Date(), lines: [] };
+
+console.log(hasOrderLines(order)); // Output: false
+```
+
+### 👎 Anti-Pattern Example: Using an incorrect function name can be explained in several ways
+
+```typescript
+function delivered(order: Order): boolean {
+  return order.deliveryDate < new Date();
+}
+
+type Order = {
+  ordered: number;
+  delivered: number;
+  deliveryDate: Date;
+};
+
+const order: Order = {
+  ordered: 10,
+  delivered: 10,
+  deliveryDate: new Date(),
+};
+
+// Question on the delivered() call: Is it delivered? Or what is the delivered amount?
+console.log(delivered(order)); // Output: true
+```
+
+</details>
+
 ## TSBP27: Declarations on top
 
 It is a good coding practice to put all declarations at the top of each script or function.
