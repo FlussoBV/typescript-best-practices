@@ -1407,8 +1407,10 @@ With [no-magic-numbers](https://palantir.github.io/tslint/rules/no-magic-numbers
 ### 👍 Doing It Right Example: Do not hard code the value of PI (3.14159) inside a function
 
 ```typescript
+const PI = 3.14159;
+
 function calculateCircleArea(radius: number) {
-  return 3.14159 * radius * radius;
+  return PI * radius * radius;
 }
 
 const area = calculateCircleArea(5);
@@ -1419,10 +1421,8 @@ console.log(area); // Output: 78.53975
 ### 👎 Anti-Pattern Example: Define the value of PI (3.14159) at the beginning of the code (or in a constants file)
 
 ```typescript
-const PI = 3.14159;
-
 function calculateCircleArea(radius: number) {
-  return PI * radius * radius;
+  return 3.14159 * radius * radius;
 }
 
 const area = calculateCircleArea(5);
