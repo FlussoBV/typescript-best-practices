@@ -1455,6 +1455,42 @@ This is because our error might be caught in higher level code with a `catch` sy
 Promises are easy to use and anything with a callback can be “promisified”.
 Callbacks are synchronous and with promises and `async…await`, we get to do things asynchronous which help speed up the code, especially because JavaScript is single-threaded.
 
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Use a promise function which executes the timeout and log the result on the then()
+
+```typescript
+function delayWithPromise(milliseconds: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, milliseconds);
+  });
+}
+
+delayWithPromise(2000)
+  .then(() => {
+    console.log('Delayed operation complete');
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+```
+
+### 👎 Anti-Pattern Example: Do not use a callback function which will be executed after the timeout
+
+```typescript
+function delayWithCallback(milliseconds: number, callback: () => void): void {
+  setTimeout(() => {
+    callback();
+  }, milliseconds);
+}
+
+delayWithCallback(2000, () => {
+  console.log('Delayed operation complete');
+});
+```
+
+</details>
+
 ## TSBP37: Do not use weird JavaScript features
 
 Things like updating array length property, using the `with` keyword, `void` keyword, updating native Object prototypes like Date, Array, Object, etc.
@@ -1575,7 +1611,41 @@ They can perform processor-intensive calculations without blocking the user inte
 - [TypeScript: Do's and Don'ts](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html)
 - [Typescript Best Practices](https://engineering.zalando.com/posts/2019/02/typescript-best-practices.html)
 
-process een enkele item, geen arrays
+## TSBP??: Process single items, not arrays
+
+Processing single items in functions in TypeScript enhances type safety, clarity, maintainability, and reusability. It adheres to the single responsibility principle and allows for better error handling.
+
+While processing arrays can be useful in certain situations, it's generally recommended to keep functions focused on processing single items for cleaner, more modular code.
+
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Process all items in an arra
+
+```typescript
+function multipleBy2(item: number): number {
+  return item * 2;
+}
+
+const myArray = [10, 20, 30, 40, 50];
+
+const processedArray = myArray.map((item) => multipleBy2(item));
+
+console.log(processedArray); // Output: [20, 40, 60, 80, 100]
+```
+
+### 👎 Anti-Pattern Example: Use cryptic names you will forget in the future.
+
+```typescript
+function multipleArrayBy2(items: number[]): number[] {
+  return items.map((item) => item * 2);
+}
+
+const processedArray = multipleArrayBy2([10, 20, 30, 40, 50]);
+
+console.log(processedArray); // Output: [20, 40, 60, 80, 100]
+```
+
+</details>
 
 No Unnecessary Abstraction:
 In this example, we don't introduce an extra layer of abstraction (convertTemperaturesWithMap).'
