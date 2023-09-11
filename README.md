@@ -1321,11 +1321,11 @@ function pureIO(output: string): string {
   return output; // Return the output instead of performing console.log
 }
 
-function pureSideEffect(a: number): {result: number, message: string} {
+function pureSideEffect(a: number): { result: number; message: string } {
   const modifiedValue = a + 10;
   return {
     result: modifiedValue * 2,
-    message: `Side effect: ${modifiedValue}`
+    message: `Side effect: ${modifiedValue}`,
   };
 }
 
@@ -1333,7 +1333,7 @@ externalState = externalState + pureAdd(3, 4); // Output: 10
 console.log(externalState); // Output: 100
 console.log(pureMultiply(2, 5, externalState)); // Output: 50
 console.log(pureRandom(Math.random(), 1, 10)); // Output: Random number between 1 and 10
-console.log(pureIO("Hello, world!")); // Output: "Hello, world!"
+console.log(pureIO('Hello, world!')); // Output: "Hello, world!"
 console.log(pureSideEffect(5)); // Output: { result: 30, message: "Side effect: 15" }
 ```
 
@@ -1342,7 +1342,7 @@ console.log(pureSideEffect(5)); // Output: { result: 30, message: "Side effect: 
 ```typescript
 let externalState = 3;
 
-function impureAdd(a: number, b: number): number{
+function impureAdd(a: number, b: number): number {
   // Mistake 1: Modifying external state
   externalState += a + b;
   return externalState;
@@ -1424,6 +1424,42 @@ This is because our error might be caught in higher level code with a `catch` sy
 
 Promises are easy to use and anything with a callback can be “promisified”.
 Callbacks are synchronous and with promises and `async…await`, we get to do things asynchronous which help speed up the code, especially because JavaScript is single-threaded.
+
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Use a promise function which executes the timeout and log the result on the then()
+
+```typescript
+function delayWithPromise(milliseconds: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, milliseconds);
+  });
+}
+
+delayWithPromise(2000)
+  .then(() => {
+    console.log('Delayed operation complete');
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+```
+
+### 👎 Anti-Pattern Example: Do not use a callback function which will be executed after the timeout
+
+```typescript
+function delayWithCallback(milliseconds: number, callback: () => void): void {
+  setTimeout(() => {
+    callback();
+  }, milliseconds);
+}
+
+delayWithCallback(2000, () => {
+  console.log('Delayed operation complete');
+});
+```
+
+</details>
 
 ## TSBP37: Do not use weird JavaScript features
 
