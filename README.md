@@ -1402,6 +1402,36 @@ Magic numbers should be avoided as they often lack documentation.
 Forcing them to be stored in variables gives them implicit documentation.
 With [no-magic-numbers](https://palantir.github.io/tslint/rules/no-magic-numbers/) lint rule, we make code more readable and refactoring easier by ensuring that special numbers are declared as constants to make their meaning explicit.
 
+<details><summary>🖊 <b>Code Examples</b></summary>
+
+### 👍 Doing It Right Example: Do not hard code the value of PI (3.14159) inside a function
+
+```typescript
+const PI = 3.14159;
+
+function calculateCircleArea(radius: number) {
+  return PI * radius * radius;
+}
+
+const area = calculateCircleArea(5);
+
+console.log(area); // Output: 78.53975
+```
+
+### 👎 Anti-Pattern Example: Define the value of PI (3.14159) at the beginning of the code (or in a constants file)
+
+```typescript
+function calculateCircleArea(radius: number) {
+  return 3.14159 * radius * radius;
+}
+
+const area = calculateCircleArea(5);
+
+console.log(area); // Output: 78.53975
+```
+
+</details>
+
 ## TSBP34: Avoid conditionals
 
 This seems like an impossible task.
